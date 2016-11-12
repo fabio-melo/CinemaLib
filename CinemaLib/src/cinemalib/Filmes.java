@@ -19,9 +19,37 @@ public class Filmes {
     private String Gênero;
     private String Prêmios;
     private List<String> Atores = new ArrayList<>();
+    private int Duração_Minutos;
     private String Direção;
+    private String Roteiro;
+    private String Escritor;
     private String Classificação_Etaria;
     private Path Poster;
+
+    
+    
+    /* Contrutor Padrão */
+
+    public Filmes(String Nome, int Ano_Prod, String País_Prod, String Cidade_Prod, String Estado_Prod, int Ano_Lançamento, String Pais_Lançamento, String Sinopse, String Gênero, String Prêmios, int Duração_Minutos, String Direção, String Roteiro, String Escritor, String Classificação_Etaria, Path Poster) {
+        this.Nome = Nome;
+        this.Ano_Prod = Ano_Prod;
+        this.País_Prod = País_Prod;
+        this.Cidade_Prod = Cidade_Prod;
+        this.Estado_Prod = Estado_Prod;
+        this.Ano_Lançamento = Ano_Lançamento;
+        this.Pais_Lançamento = Pais_Lançamento;
+        this.Sinopse = Sinopse;
+        this.Gênero = Gênero;
+        this.Prêmios = Prêmios;
+        this.Duração_Minutos = Duração_Minutos;
+        this.Direção = Direção;
+        this.Roteiro = Roteiro;
+        this.Escritor = Escritor;
+        this.Classificação_Etaria = Classificação_Etaria;
+        this.Poster = Poster;
+    }
+    
+
 
 
     /**
@@ -29,169 +57,173 @@ public class Filmes {
      * utilizando path para viabilizar o uso de Posters para os filmes
      */
 
-    // Construtor padrão //
-    public Filmes(String nome, List<String> categorias, int ano_Prod, String país_Prod, String cidade_Prod, String estado_Prod, int ano_Lançamento, String pais_Lançamento, String sinopse, String gênero, String prêmios, List<String> atores, String direção, String classificação_Etaria, Path poster) {
-        Nome = nome;
-        Categorias = categorias;
-        Ano_Prod = ano_Prod;
-        País_Prod = país_Prod;
-        Cidade_Prod = cidade_Prod;
-        Estado_Prod = estado_Prod;
-        Ano_Lançamento = ano_Lançamento;
-        Pais_Lançamento = pais_Lançamento;
-        Sinopse = sinopse;
-        Gênero = gênero;
-        Prêmios = prêmios;
-        Atores = atores;
-        Direção = direção;
-        Classificação_Etaria = classificação_Etaria;
-        Poster = poster;
-    }
-
-
+ 
     //Getters e Setters
-
 
     public String getNome() {
         return Nome;
     }
 
-    public void setNome(String nome) {
-        Nome = nome;
+    public void setNome(String Nome) {
+        this.Nome = Nome;
     }
 
     public List<String> getCategorias() {
         return Categorias;
     }
 
-    public void setCategorias(List<String> categorias) {
-        Categorias = categorias;
+    public void setCategorias(List<String> Categorias) {
+        this.Categorias = Categorias;
     }
 
     public int getAno_Prod() {
         return Ano_Prod;
     }
 
-    public void setAno_Prod(int ano_Prod) {
-        Ano_Prod = ano_Prod;
+    public void setAno_Prod(int Ano_Prod) {
+        this.Ano_Prod = Ano_Prod;
     }
 
     public String getPaís_Prod() {
         return País_Prod;
     }
 
-    public void setPaís_Prod(String país_Prod) {
-        País_Prod = país_Prod;
+    public void setPaís_Prod(String País_Prod) {
+        this.País_Prod = País_Prod;
     }
 
     public String getCidade_Prod() {
         return Cidade_Prod;
     }
 
-    public void setCidade_Prod(String cidade_Prod) {
-        Cidade_Prod = cidade_Prod;
+    public void setCidade_Prod(String Cidade_Prod) {
+        this.Cidade_Prod = Cidade_Prod;
     }
 
     public String getEstado_Prod() {
         return Estado_Prod;
     }
 
-    public void setEstado_Prod(String estado_Prod) {
-        Estado_Prod = estado_Prod;
+    public void setEstado_Prod(String Estado_Prod) {
+        this.Estado_Prod = Estado_Prod;
     }
 
     public int getAno_Lançamento() {
         return Ano_Lançamento;
     }
 
-    public void setAno_Lançamento(int ano_Lançamento) {
-        Ano_Lançamento = ano_Lançamento;
+    public void setAno_Lançamento(int Ano_Lançamento) {
+        this.Ano_Lançamento = Ano_Lançamento;
     }
 
     public String getPais_Lançamento() {
         return Pais_Lançamento;
     }
 
-    public void setPais_Lançamento(String pais_Lançamento) {
-        Pais_Lançamento = pais_Lançamento;
+    public void setPais_Lançamento(String Pais_Lançamento) {
+        this.Pais_Lançamento = Pais_Lançamento;
     }
 
     public String getSinopse() {
         return Sinopse;
     }
 
-    public void setSinopse(String sinopse) {
-        Sinopse = sinopse;
+    public void setSinopse(String Sinopse) {
+        this.Sinopse = Sinopse;
     }
 
     public String getGênero() {
         return Gênero;
     }
 
-    public void setGênero(String gênero) {
-        Gênero = gênero;
+    public void setGênero(String Gênero) {
+        this.Gênero = Gênero;
     }
 
     public String getPrêmios() {
         return Prêmios;
     }
 
-    public void setPrêmios(String prêmios) {
-        Prêmios = prêmios;
+    public void setPrêmios(String Prêmios) {
+        this.Prêmios = Prêmios;
     }
 
     public List<String> getAtores() {
         return Atores;
     }
 
-    public void setAtores(List<String> atores) {
-        Atores = atores;
+    public void setAtores(List<String> Atores) {
+        this.Atores = Atores;
     }
 
     public String getDireção() {
         return Direção;
     }
 
-    public void setDireção(String direção) {
-        Direção = direção;
+    public void setDireção(String Direção) {
+        this.Direção = Direção;
+    }
+
+    public String getRoteiro() {
+        return Roteiro;
+    }
+
+    public void setRoteiro(String Roteiro) {
+        this.Roteiro = Roteiro;
+    }
+
+    public String getEscritor() {
+        return Escritor;
+    }
+
+    public void setEscritor(String Escritor) {
+        this.Escritor = Escritor;
     }
 
     public String getClassificação_Etaria() {
         return Classificação_Etaria;
     }
 
-    public void setClassificação_Etaria(String classificação_Etaria) {
-        Classificação_Etaria = classificação_Etaria;
+    public void setClassificação_Etaria(String Classificação_Etaria) {
+        this.Classificação_Etaria = Classificação_Etaria;
+    }
+
+    public int getDuração_Minutos() {
+        return Duração_Minutos;
+    }
+
+    public void setDuração_Minutos(int Duração_Minutos) {
+        this.Duração_Minutos = Duração_Minutos;
     }
 
     public Path getPoster() {
         return Poster;
     }
 
-    public void setPoster(Path poster) {
-        Poster = poster;
+    public void setPoster(Path Poster) {
+        this.Poster = Poster;
     }
-
-    // ToString - Listagem em Texto
-
 
     @Override
     public String toString() {
-        return "Filmes{" +
-                "Nome='" + Nome + '\'' +
-                ", Categorias=" + Categorias +
-                ", Produção - Ano:" + Ano_Prod +
-                ", País:'" + País_Prod + '\'' +
-                ", Cidade:'" + Cidade_Prod + '\'' +
-                ", Estado:'" + Estado_Prod + '\'' +
-                ", Lançamento - Ano:" + Ano_Lançamento +
-                ", Pais:'" + Pais_Lançamento + '\'' +
-                ", Sinopse:'" + Sinopse + '\'' +
-                ", Gênero:'" + Gênero + '\'' +
-                ", Prêmios:'" + Prêmios + '\'' +
-                ", Elenco" + Atores +
-                ", Direção:'" + Direção + '\'' +
-                ", Classificação Etária:'" + Classificação_Etaria + '\'' +
-                '}';
+        return "Filmes{" + "Nome=" + Nome + 
+                ", Categorias=" + Categorias + 
+                ", Ano_Prod=" + Ano_Prod + 
+                ", Pa\u00eds_Prod=" + País_Prod + 
+                ", Cidade_Prod=" + Cidade_Prod + 
+                ", Estado_Prod=" + Estado_Prod + 
+                ", Ano_Lan\u00e7amento=" + Ano_Lançamento + 
+                ", Pais_Lan\u00e7amento=" + Pais_Lançamento + 
+                ", Sinopse=" + Sinopse + 
+                ", G\u00eanero=" + Gênero + 
+                ", Pr\u00eamios=" + Prêmios + 
+                ", Atores=" + Atores + 
+                ", Duração" + Duração_Minutos +
+                "min, Dire\u00e7\u00e3o=" + Direção + 
+                ", Roteiro=" + Roteiro + 
+                ", Escritor=" + Escritor + 
+                ", Classifica\u00e7\u00e3o_Etaria=" + Classificação_Etaria + '}';
     }
+
+
 }
