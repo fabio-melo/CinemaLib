@@ -1,4 +1,4 @@
-package com.lp1.cinemascopium;
+package cinemalib;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Classe que gerencia o formato da biblioteca
  */
-public class Filmes {
+public class Filme {
     private String Nome;
     private List<String> Categorias = new ArrayList<>();
     private int Ano_Prod;
@@ -30,7 +30,7 @@ public class Filmes {
     
     /* Contrutor Padrão */
 
-    public Filmes(String Nome, int Ano_Prod, String País_Prod, String Cidade_Prod, String Estado_Prod, int Ano_Lançamento, String Pais_Lançamento, String Sinopse, String Gênero, String Prêmios, int Duração_Minutos, String Direção, String Roteiro, String Escritor, String Classificação_Etaria, Path Poster) {
+    public Filme(String Nome, int Ano_Prod, String País_Prod, String Cidade_Prod, String Estado_Prod, int Ano_Lançamento, String Pais_Lançamento, String Sinopse, String Gênero, String Prêmios, int Duração_Minutos, String Direção, String Roteiro, String Escritor, String Classificação_Etaria, Path Poster) {
         this.Nome = Nome;
         this.Ano_Prod = Ano_Prod;
         this.País_Prod = País_Prod;
@@ -206,7 +206,7 @@ public class Filmes {
 
     @Override
     public String toString() {
-        return "Filmes{" + "Nome=" + Nome + 
+        return "Filme{" + "Nome=" + Nome + 
                 ", Categorias=" + Categorias + 
                 ", Ano_Prod=" + Ano_Prod + 
                 ", Pa\u00eds_Prod=" + País_Prod + 
