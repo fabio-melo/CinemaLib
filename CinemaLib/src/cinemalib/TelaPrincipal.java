@@ -164,21 +164,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-        //DADOS DE TESTE
-        List<Filme> listaFilmes = new ArrayList();
-        Filme Vingadores = new Filme("Os Vingadores", 2012,"Estados Unidos","New York","NY",2012,"Estados Unidos","Uma Vingança muito vingativa", "Ação","Oscar 2013",150,"Josh Whedon", "John Gruber","Finn Jones","Livre", null); 
-        Filme VingançadoMal = new Filme("Vingança do Mal", 2012,"Estados Unidos","New York","NY",2012,"Estados Unidos","Uma Vingança muito vingativa", "Ação","Oscar 2013",150,"Josh Whedon", "John Gruber","Finn Jones","Livre", null); 
-        Filme F3 = new Filme("O FILME DO JOGO", 2012,"Estados Unidos","New York","NY",2012,"Estados Unidos","Uma Vingança muito vingativa", "Ação","Oscar 2013",150,"Josh Whedon", "John Gruber","Finn Jones","Livre", null); 
-        Filme F4 = new Filme("Exterminador do Passado", 2012,"Estados Unidos","New York","NY",2012,"Estados Unidos","Uma Vingança muito vingativa", "Ação","Oscar 2013",150,"Josh Whedon", "John Gruber","Finn Jones","Livre", null); 
-        
-        listaFilmes.add(Vingadores);
-        listaFilmes.add(VingançadoMal);
-        listaFilmes.add(F3);
-        listaFilmes.add(F4);
-        // FIM DOS DADOS DE TESTE
-        
-        
+
         
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -1,14 +1,13 @@
 package cinemalib;
 import java.util.ArrayList;
-import java.util.Objects;
-
+import java.io.Serializable;
 /**
  * Linguagem de Programação 1 - Projeto Final
  * @author Alielson, Fábio Melo, Gabriel, Yuri Felix
  * Filme.java - Classe que gerencia o Objeto Filme
  */
 
-public class Filme {
+public class Filme implements Serializable {
     private String Nome;
     private ArrayList<String> Categorias;
     private String Material_Original;
@@ -20,6 +19,7 @@ public class Filme {
     private ArrayList<NomeRegistro> Elenco;
     private int Duracao_Minutos;
     private String Direcao;
+
 
     //Mini-subclasses genéricas para lidar com campos Específicos //
     public static class NomeRegistro{
