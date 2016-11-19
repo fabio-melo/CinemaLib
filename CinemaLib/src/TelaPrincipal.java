@@ -1,6 +1,8 @@
 
 import java.io.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -16,16 +18,39 @@ import javax.swing.JOptionPane;
  * @author Yuri Felix
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-
+    
+    
+    public static String nomedoarquivo = "meusfilmes.ser";
    //metodos para serializar e deserializar
     public static void carregarDados(){
+        File arquivofilmes = new File(nomedoarquivo);
+            if(arquivofilmes.exists() == false){
+            try {
+                arquivofilmes.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Erro de Leitura");
+            }
+}
+            
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+                try {
+                        fis = new FileInputStream(nomedoarquivo);
+                        ois = new ObjectInputStream(fis);
+                        listaFilmes = (ArrayList) ois.readObject();
+                        ois.close();
+                } catch (Exception ex) {
+                        ex.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "Erro Indefinido");
+                }
         
         Deserializador d = new Deserializador();
 
         try {
             
             listaFilmes = null;
-            listaFilmes = (ArrayList<Filme>) d.deserializar("filmagem");
+            listaFilmes = (ArrayList<Filme>) d.deserializar(nomedoarquivo);
             
             
         } catch (Exception ex) {
@@ -37,7 +62,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public void escreverDados(){
         Serializador s = new Serializador();
         try{
-            s.serializar("filmagem", listaFilmes);
+            s.serializar(nomedoarquivo, listaFilmes);
         }catch (Exception ex){
             System.err.println("Falha - " +
             ex.toString());
@@ -45,7 +70,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }
     //metodo que vai atualizar a lista de filmes 
-    public void atualizarLista(){
+    public void atualizarLista() {
         carregarDados();
         DefaultListModel lst = new DefaultListModel();
         for(Filme f : listaFilmes){
