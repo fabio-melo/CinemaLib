@@ -155,27 +155,28 @@ public class Aplicativo extends javax.swing.JFrame {
         try {
             //s.serializar("filmagem", listaFilmes);
             listaFilmes = null;
-            listaFilmes = (ArrayList<Filme>) d.deserializar("filmagem");
+            listaFilmes = (ArrayList<Filme>) d.deserializar(nomedoarquivo);
             DefaultListModel lst = new DefaultListModel();
             for(Filme f : listaFilmes){
                 
                 lst.addElement(f.getNome());
                 
             }
-            listagem.setModel(lst);
+ //           listagem.setModel(lst);
         } catch (Exception ex) {
             System.err.println("Falha ao carregar lista! - " +
             ex.toString());
         }
    
     }
+    public static String nomedoarquivo = "meusfilmes.ser";
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) throws IOException {
 
         ArrayList<Filme> meusfilmes = new ArrayList<>();
-        String nomedoarquivo = "meusfilmes.ser";
         /* Lê o arquivo (se existir) ou cria um novo arquivo se não encontrado */
         File arquivofilmes = new File(nomedoarquivo);
             if(arquivofilmes.exists() == false){
