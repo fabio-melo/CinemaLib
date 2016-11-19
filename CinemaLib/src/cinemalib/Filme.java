@@ -1,6 +1,7 @@
 package cinemalib;
-import java.util.ArrayList;
-import java.io.Serializable;
+import java.io.*;
+import java.util.*;
+
 /**
  * Linguagem de Programação 1 - Projeto Final
  * @author Alielson, Fábio Melo, Gabriel, Yuri Felix
@@ -17,13 +18,8 @@ public class Filme implements Serializable {
     private String Genero;
     private String Premios;
     private ArrayList<NomeRegistro> Elenco;
-    private int Duracao_Minutos;
-    private String Direcao;
-
     
-    public Filme(String Nome) {
-        this.Nome = Nome;
-        }
+    private String Direcao;
 
     //Mini-subclasses genéricas para lidar com campos Específicos //
     public static class NomeRegistro{
@@ -120,11 +116,15 @@ public class Filme implements Serializable {
         this.Genero = Genero;
         this.Premios = Premios;
         this.Elenco = Elenco;
-        this.Duracao_Minutos = Duracao_Minutos;
         this.Direcao = Direcao;
     }
-
-
+    //temp testar
+    public Filme(String nome, String Material_Original){
+        this.Nome = nome;
+        this.Material_Original = Material_Original;
+        
+        
+    }
     
     //Getters e Setters /
 
@@ -188,15 +188,6 @@ public class Filme implements Serializable {
         this.Premios = Premios;
     }
 
-    public int getDuracao_Minutos() {
-        return Duracao_Minutos;
-    }
-
-    public void setDuracao_Minutos(int Duracao_Minutos) throws IllegalArgumentException {
-        if (Duracao_Minutos < 0 || Duracao_Minutos > 1000) { throw new IllegalArgumentException("Duração Inválida."); } 
-        this.Duracao_Minutos = Duracao_Minutos;
-    }
-
     public String getDirecao() {
         return Direcao;
     }
@@ -227,7 +218,7 @@ public class Filme implements Serializable {
 
     @Override
     public String toString() {
-        return "Filme{" + "Nome=" + Nome + ", Categorias=" + Categorias + ", Material_Original=" + Material_Original + ", Producao=" + Producao + ", Lancamento=" + Lancamento + ", Sinopse=" + Sinopse + ", Genero=" + Genero + ", Premios=" + Premios + ", Elenco=" + Elenco + ", Duracao_Minutos=" + Duracao_Minutos + ", Direcao=" + Direcao + '}';
+        return "Filme{" + "Nome=" + Nome + ", Categorias=" + Categorias + ", Material_Original=" + Material_Original + ", Producao=" + Producao + ", Lancamento=" + Lancamento + ", Sinopse=" + Sinopse + ", Genero=" + Genero + ", Premios=" + Premios + ", Elenco=" + Elenco + ", Direcao=" + Direcao + '}';
     }
     
     public String toStringBonita(){
@@ -238,14 +229,12 @@ public class Filme implements Serializable {
                 "\n Lançamento:\n" + Lancamento.toString() +
                 "\n Gênero:" + Genero + 
                 "\n Prêmios" + Premios + 
-                "\n Duração:" + Duracao_Minutos + 
                 "\n Elenco:\n" + Elenco + 
                 " minutos \n Direção:\n" + Direcao + 
                 "\n Sinopse:" + Sinopse; 
 
     }
-    
-    
-    }
+ 
+}
 
-  
+    

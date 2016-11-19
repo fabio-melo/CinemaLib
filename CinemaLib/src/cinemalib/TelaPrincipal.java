@@ -1,23 +1,72 @@
 package cinemalib;
-
-
 import java.io.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  * Linguagem de Programação 1 - Projeto Final
  * @author Alielson, Fábio Melo, Gabriel, Yuri Felix
- * Aplicativo.java - Classe que instancia o Aplicativo
+ * TelaPrincipal.java - Classe Aplicação e Janela Principal.
  */
 
 
-public class Aplicativo extends javax.swing.JFrame {
+public class TelaPrincipal extends javax.swing.JFrame {
+    
+    
+    public static String nomedoarquivo = "meusfilmes.ser";
+   //metodos para serializar e deserializar
+    public static void carregarDados(){
+        
+        Deserializador d = new Deserializador();
 
+        try {
+            
+            listaFilmes = null;
+            listaFilmes = (ArrayList<Filme>) d.deserializar(nomedoarquivo);
+            
+            
+        } catch (Exception ex) {
+            System.err.println("Falha ao carregar lista! - " +
+            ex.toString());
+        }
+   
+    }
+    public void escreverDados(){
+        Serializador s = new Serializador();
+        try{
+            s.serializar(nomedoarquivo, listaFilmes);
+        }catch (Exception ex){
+            System.err.println("Falha - " +
+            ex.toString());
+        }
+        
+    }
+    //metodo que vai atualizar a lista de filmes 
+    public void atualizarLista() {
+        carregarDados();
+        DefaultListModel lst = new DefaultListModel();
+        for(Filme f : listaFilmes){
+                
+                lst.addElement(f.getNome());
+                
+            }
+            listagem.setModel(lst);
+    }
+
+    
+    
+    
+    
     /**
      * Creates new form TelaPrincipal
      */
-    public Aplicativo() {
+    public TelaPrincipal() {
+        
+        
+        
         initComponents();
     }
 
@@ -34,12 +83,17 @@ public class Aplicativo extends javax.swing.JFrame {
         buttonOk = new javax.swing.JButton();
         labelNome = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        dadosFilme = new javax.swing.JTextArea();
         buttonEditar = new javax.swing.JButton();
         buttonExcluir = new javax.swing.JButton();
         buttonAdicionar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        listagem = new javax.swing.JList<>();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+
+        setTitle("CineLibrary");
 
         campoPesquisar.setText("Pesquisar...");
 
@@ -53,9 +107,9 @@ public class Aplicativo extends javax.swing.JFrame {
         labelNome.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelNome.setText("Nome do Filme");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        dadosFilme.setColumns(20);
+        dadosFilme.setRows(5);
+        jScrollPane1.setViewportView(dadosFilme);
 
         buttonEditar.setText("EDITAR");
         buttonEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -78,8 +132,26 @@ public class Aplicativo extends javax.swing.JFrame {
             }
         });
 
-        jList2.setModel(lst);
-        jScrollPane3.setViewportView(jList2);
+        listagem.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        listagem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listagemMouseClicked(evt);
+            }
+        });
+        listagem.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listagemValueChanged(evt);
+            }
+        });
+        jScrollPane3.setViewportView(listagem);
+
+        jMenu1.setText("Arquivo");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Editar");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,7 +159,7 @@ public class Aplicativo extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(buttonExcluir)
@@ -99,7 +171,7 @@ public class Aplicativo extends javax.swing.JFrame {
                             .addComponent(campoPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(buttonOk, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
@@ -116,10 +188,8 @@ public class Aplicativo extends javax.swing.JFrame {
                     .addComponent(campoPesquisar, javax.swing.GroupLayout.Alignment.LEADING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonExcluir)
@@ -132,15 +202,36 @@ public class Aplicativo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOkActionPerformed
-        // TODO add your handling code here:
+        
+        String pesquisa = campoPesquisar.getText();
+        if(campoPesquisar.getText() == null){
+            return;
+        }
+        DefaultListModel lst = new DefaultListModel();
+        for(int i=0;i<listaFilmes.size();i++){
+            if(listaFilmes.get(i).getNome().indexOf(pesquisa)>=0){
+                lst.addElement(listaFilmes.get(i).getNome());
+            }
+       
+        }
+        listagem.setModel(lst);
     }//GEN-LAST:event_buttonOkActionPerformed
 
     private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
-         new TelaCadastro().setVisible(true);
+         
     }//GEN-LAST:event_buttonEditarActionPerformed
 
     private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
-        // TODO add your handling code here:
+        int apagar = listagem.getLeadSelectionIndex();
+       
+        if(apagar == -1){
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma opção");
+        }else{
+            JOptionPane.showConfirmDialog(rootPane,"Você deseja apagar? ");
+            listaFilmes.remove(apagar);
+            escreverDados();
+            atualizarLista();
+        }
     }//GEN-LAST:event_buttonExcluirActionPerformed
 
     private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
@@ -148,64 +239,28 @@ public class Aplicativo extends javax.swing.JFrame {
         new TelaCadastro().setVisible(true);
         
     }//GEN-LAST:event_buttonAdicionarActionPerformed
-    public void carregarLista(){
-        List<Filme> listaFilmes = new ArrayList();
-        Deserializador d = new Deserializador();
 
-        try {
-            //s.serializar("filmagem", listaFilmes);
-            listaFilmes = null;
-            listaFilmes = (ArrayList<Filme>) d.deserializar(nomedoarquivo);
-            DefaultListModel lst = new DefaultListModel();
-            for(Filme f : listaFilmes){
-                
-                lst.addElement(f.getNome());
-                
-            }
- //           listagem.setModel(lst);
-        } catch (Exception ex) {
-            System.err.println("Falha ao carregar lista! - " +
-            ex.toString());
-        }
-   
-    }
-    public static String nomedoarquivo = "meusfilmes.ser";
+    private void listagemValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listagemValueChanged
+        Filme sel = listaFilmes.get(listagem.getLeadSelectionIndex());
+        
+        
+        dadosFilme.append(sel.toString());
+        labelNome.setText(sel.getNome());
+        
+        
+        
+        
+    }//GEN-LAST:event_listagemValueChanged
 
+    private void listagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listagemMouseClicked
+        atualizarLista();
+    }//GEN-LAST:event_listagemMouseClicked
+    
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) throws IOException {
-
-        ArrayList<Filme> meusfilmes = new ArrayList<>();
-        /* Lê o arquivo (se existir) ou cria um novo arquivo se não encontrado */
-        File arquivofilmes = new File(nomedoarquivo);
-            if(arquivofilmes.exists() == false){
-                arquivofilmes.createNewFile();
-            }
-            
-        FileInputStream fis = null;
-        ObjectInputStream ois = null;
-                try {
-                        fis = new FileInputStream(nomedoarquivo);
-                        ois = new ObjectInputStream(fis);
-                        meusfilmes = (ArrayList) ois.readObject();
-                        ois.close();
-                } catch (Exception ex) {
-                        ex.printStackTrace();
-                }
-        
-        Filme IdentidadeBourne = new Filme("Identidade Bourne");
-        Filme Brasil201 = new Filme("Brasil 201");
-        
-        meusfilmes.add(IdentidadeBourne);
-        meusfilmes.add(Brasil201);
-                
-
-
-
-
-
-
+    public static void main(String args[]) {
+    
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -219,66 +274,53 @@ public class Aplicativo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Aplicativo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Aplicativo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Aplicativo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Aplicativo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
+        
+        
+        
+            
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Aplicativo().setVisible(true);
+                TelaPrincipal tp = new TelaPrincipal();
+                tp.setVisible(true);
+                tp.atualizarLista();
             }
+            
         });
         
-        
-        
-        
-        
-        
-      /*  List<Filme> listaFilmes = new ArrayList();
-        Filme F1 = new Filme("nom","2006");
-        Filme F2 = new Filme("a","20026");
-        Filme F3 = new Filme("a","20026");
-        listaFilmes.add(F1);
-        listaFilmes.add(F2);
-        listaFilmes.add(F3);
-       Serial.Escrita s = new Serial.Escrita();
-       Serial.Leitura d = new Serial.leitura();
        
-       
-        try {
-            s.serializar("filmagem", listaFilmes);
-            listaFilmes = null;
-            listaFilmes = (ArrayList<Filme>) d.deserializar("filmagem");
-            for(Filme f : listaFilmes){
-                System.out.println("ArrayList: " + f.getNome() + " - " + f.getMaterial_Original());
-            }
-        } catch (Exception ex) {
-            System.err.println("Falha ao serializar ou deserializar! - " +
-            ex.toString());
-        }
-*/
+        
+        
     }
-
+    public static List<Filme> listaFilmes = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionar;
     private javax.swing.JButton buttonEditar;
     private javax.swing.JButton buttonExcluir;
     private javax.swing.JButton buttonOk;
     private javax.swing.JTextField campoPesquisar;
-    private javax.swing.JList<String> jList2;
+    private javax.swing.JTextArea dadosFilme;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel labelNome;
+    private javax.swing.JList<String> listagem;
     // End of variables declaration//GEN-END:variables
+
+
+    
+    
+    
 }
