@@ -1,127 +1,163 @@
 package cinemalib;
-import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 /**
- * Classe que gerencia o formato da biblioteca
+ * Linguagem de Programação 1 - Projeto Final
+ * @author Alielson, Fábio Melo, Gabriel, Yuri Felix
+ * Filme.java - Classe que gerencia o Objeto Filme
  */
+
 public class Filme {
     private String Nome;
-    private List<String> Categorias = new ArrayList<>();
-    private int Ano_Prod;
-    private String País_Prod;
-    private String Cidade_Prod;
-    private String Estado_Prod;
-    private int Ano_Lançamento;
-    private String Pais_Lançamento;
+    private ArrayList<String> Categorias;
+    private String Material_Original;
+    private Localizacao Producao;
+    private Localizacao Lancamento;
     private String Sinopse;
-    private String Gênero;
-    private String Prêmios;
-    private List<String> Atores = new ArrayList<>();
-    private int Duração_Minutos;
-    private String Direção;
-    private String Roteiro;
-    private String Escritor;
-    private String Classificação_Etaria;
-    private Path Poster;
+    private String Genero;
+    private String Premios;
+    private ArrayList<NomeRegistro> Elenco;
+    private int Duracao_Minutos;
+    private String Direcao;
 
-    
-    
-    /* Contrutor Padrão */
+    //Mini-subclasses genéricas para lidar com campos Específicos //
+    public static class NomeRegistro{
+        // Objeto para o Array de Filmes e Diretor
+        private String Nome;
+        private String Registro_Artistico;
 
-    public Filme(String Nome, int Ano_Prod, String País_Prod, String Cidade_Prod, String Estado_Prod, int Ano_Lançamento, String Pais_Lançamento, String Sinopse, String Gênero, String Prêmios, int Duração_Minutos, String Direção, String Roteiro, String Escritor, String Classificação_Etaria, Path Poster) {
-        this.Nome = Nome;
-        this.Ano_Prod = Ano_Prod;
-        this.País_Prod = País_Prod;
-        this.Cidade_Prod = Cidade_Prod;
-        this.Estado_Prod = Estado_Prod;
-        this.Ano_Lançamento = Ano_Lançamento;
-        this.Pais_Lançamento = Pais_Lançamento;
-        this.Sinopse = Sinopse;
-        this.Gênero = Gênero;
-        this.Prêmios = Prêmios;
-        this.Duração_Minutos = Duração_Minutos;
-        this.Direção = Direção;
-        this.Roteiro = Roteiro;
-        this.Escritor = Escritor;
-        this.Classificação_Etaria = Classificação_Etaria;
-        this.Poster = Poster;
+        public NomeRegistro(String Nome, String Registro_Artistico) {
+            this.Nome = Nome;
+            this.Registro_Artistico = Registro_Artistico;
+        }
+
+        public String getNome() {
+            return Nome;
+        }
+
+        public void setNome(String Nome) {
+            this.Nome = Nome;
+        }
+
+        public String getRegistro_Artistico() {
+            return Registro_Artistico;
+        }
+
+        public void setRegistro_Artistico(String Registro_Artistico) {
+            this.Registro_Artistico = Registro_Artistico;
+        }
+
+        @Override
+        public String toString() {
+            return "Nome:" + Nome + ", Registro Artístico:" + Registro_Artistico + '}';
+        }
+        
+        
+    }
+    public static class Localizacao{
+        private int Ano;
+        private String Pais;
+        private String Cidade;
+        private String Estado;
+
+        public int getAno() {
+            return Ano;
+        }
+        
+        public void setAno(int Ano) throws IllegalArgumentException {
+            // Verifica se a data é Válida //
+            if (Ano > 2100 || Ano < 1800) { throw new IllegalArgumentException("Ano Inválido"); }
+            this.Ano = Ano;
+        }
+
+        public String getPais() {
+            return Pais;
+        }
+
+        public void setPais(String Pais) {
+            this.Pais = Pais;
+        }
+
+        public String getCidade() {
+            return Cidade;
+        }
+
+        public void setCidade(String Cidade) {
+            this.Cidade = Cidade;
+        }
+
+        public String getEstado() {
+            return Estado;
+        }
+
+        public void setEstado(String Estado) {
+            this.Estado = Estado;
+        }
+
+        @Override
+        public String toString() {
+            return "Ano:" + Ano + ", País:" + Pais + ", Cidade:" + Cidade + ", Estado:" + Estado + '}';
+        }
+        
+        
+        
     }
     
+    // Construtor
+
+    public Filme(String Nome, ArrayList<String> Categorias, String Material_Original, Localizacao Producao, Localizacao Lancamento, String Sinopse, String Genero, String Premios, ArrayList<NomeRegistro> Elenco, int Duracao_Minutos, String Direcao) {
+        this.Nome = Nome;
+        this.Categorias = Categorias;
+        this.Material_Original = Material_Original;
+        this.Producao = Producao;
+        this.Lancamento = Lancamento;
+        this.Sinopse = Sinopse;
+        this.Genero = Genero;
+        this.Premios = Premios;
+        this.Elenco = Elenco;
+        this.Duracao_Minutos = Duracao_Minutos;
+        this.Direcao = Direcao;
+    }
 
 
-
-    /**
-     * Utilizamos a interface List para flexibilizar a implementação e permitir modificações caso necessário
-     * utilizando path para viabilizar o uso de Posters para os filmes
-     */
-
- 
-    //Getters e Setters
+    
+    //Getters e Setters /
 
     public String getNome() {
         return Nome;
     }
 
     public void setNome(String Nome) {
+        if (Nome.trim().length() == 0) //Verifica se o nome está vazio //
+        {
+           throw new IllegalArgumentException("O Nome não pode estar vazio");
+        }
         this.Nome = Nome;
     }
 
-    public List<String> getCategorias() {
-        return Categorias;
+    public String getMaterial_Original() {
+        return Material_Original;
     }
 
-    public void setCategorias(List<String> Categorias) {
-        this.Categorias = Categorias;
+    public void setMaterial_Original(String Material_Original) {
+        this.Material_Original = Material_Original;
     }
 
-    public int getAno_Prod() {
-        return Ano_Prod;
+    public Localizacao getProducao() {
+        return Producao;
     }
 
-    public void setAno_Prod(int Ano_Prod) {
-        this.Ano_Prod = Ano_Prod;
+    public void setProducao(Localizacao Producao) {
+        this.Producao = Producao;
     }
 
-    public String getPaís_Prod() {
-        return País_Prod;
+    public Localizacao getLancamento() {
+        return Lancamento;
     }
 
-    public void setPaís_Prod(String País_Prod) {
-        this.País_Prod = País_Prod;
-    }
-
-    public String getCidade_Prod() {
-        return Cidade_Prod;
-    }
-
-    public void setCidade_Prod(String Cidade_Prod) {
-        this.Cidade_Prod = Cidade_Prod;
-    }
-
-    public String getEstado_Prod() {
-        return Estado_Prod;
-    }
-
-    public void setEstado_Prod(String Estado_Prod) {
-        this.Estado_Prod = Estado_Prod;
-    }
-
-    public int getAno_Lançamento() {
-        return Ano_Lançamento;
-    }
-
-    public void setAno_Lançamento(int Ano_Lançamento) {
-        this.Ano_Lançamento = Ano_Lançamento;
-    }
-
-    public String getPais_Lançamento() {
-        return Pais_Lançamento;
-    }
-
-    public void setPais_Lançamento(String Pais_Lançamento) {
-        this.Pais_Lançamento = Pais_Lançamento;
+    public void setLancamento(Localizacao Lancamento) {
+        this.Lancamento = Lancamento;
     }
 
     public String getSinopse() {
@@ -132,98 +168,80 @@ public class Filme {
         this.Sinopse = Sinopse;
     }
 
-    public String getGênero() {
-        return Gênero;
+    public String getGenero() {
+        return Genero;
     }
 
-    public void setGênero(String Gênero) {
-        this.Gênero = Gênero;
+    public void setGenero(String Genero) {
+        this.Genero = Genero;
     }
 
-    public String getPrêmios() {
-        return Prêmios;
+    public String getPremios() {
+        return Premios;
     }
 
-    public void setPrêmios(String Prêmios) {
-        this.Prêmios = Prêmios;
+    public void setPremios(String Premios) {
+        this.Premios = Premios;
     }
 
-    public List<String> getAtores() {
-        return Atores;
+    public int getDuracao_Minutos() {
+        return Duracao_Minutos;
     }
 
-    public void setAtores(List<String> Atores) {
-        this.Atores = Atores;
+    public void setDuracao_Minutos(int Duracao_Minutos) throws IllegalArgumentException {
+        if (Duracao_Minutos < 0 || Duracao_Minutos > 1000) { throw new IllegalArgumentException("Duração Inválida."); } 
+        this.Duracao_Minutos = Duracao_Minutos;
     }
 
-    public String getDireção() {
-        return Direção;
+    public String getDirecao() {
+        return Direcao;
     }
 
-    public void setDireção(String Direção) {
-        this.Direção = Direção;
+    public void setDirecao(String Direcao) {
+        this.Direcao = Direcao;
     }
 
-    public String getRoteiro() {
-        return Roteiro;
+    public ArrayList<String> getCategorias() {
+        return Categorias;
     }
 
-    public void setRoteiro(String Roteiro) {
-        this.Roteiro = Roteiro;
+    public ArrayList<NomeRegistro> getElenco() {
+        return Elenco;
     }
 
-    public String getEscritor() {
-        return Escritor;
+    public void setCategorias(ArrayList<String> Categorias) {
+        this.Categorias = Categorias;
     }
 
-    public void setEscritor(String Escritor) {
-        this.Escritor = Escritor;
+    public void setElenco(ArrayList<NomeRegistro> Elenco) {
+        this.Elenco = Elenco;
     }
+    
+    
 
-    public String getClassificação_Etaria() {
-        return Classificação_Etaria;
-    }
-
-    public void setClassificação_Etaria(String Classificação_Etaria) {
-        this.Classificação_Etaria = Classificação_Etaria;
-    }
-
-    public int getDuração_Minutos() {
-        return Duração_Minutos;
-    }
-
-    public void setDuração_Minutos(int Duração_Minutos) {
-        this.Duração_Minutos = Duração_Minutos;
-    }
-
-    public Path getPoster() {
-        return Poster;
-    }
-
-    public void setPoster(Path Poster) {
-        this.Poster = Poster;
-    }
+    //Método ToString
 
     @Override
     public String toString() {
-        return "Filme{" + "Nome=" + Nome + 
-                ", Categorias=" + Categorias + 
-                ", Ano_Prod=" + Ano_Prod + 
-                ", Pa\u00eds_Prod=" + País_Prod + 
-                ", Cidade_Prod=" + Cidade_Prod + 
-                ", Estado_Prod=" + Estado_Prod + 
-                ", Ano_Lan\u00e7amento=" + Ano_Lançamento + 
-                ", Pais_Lan\u00e7amento=" + Pais_Lançamento + 
-                ", Sinopse=" + Sinopse + 
-                ", G\u00eanero=" + Gênero + 
-                ", Pr\u00eamios=" + Prêmios + 
-                ", Atores=" + Atores + 
-                ", Duração" + Duração_Minutos +
-                "min, Dire\u00e7\u00e3o=" + Direção + 
-                ", Roteiro=" + Roteiro + 
-                ", Escritor=" + Escritor + 
-                ", Classifica\u00e7\u00e3o_Etaria=" + Classificação_Etaria + '}';
+        return "Filme{" + "Nome=" + Nome + ", Categorias=" + Categorias + ", Material_Original=" + Material_Original + ", Producao=" + Producao + ", Lancamento=" + Lancamento + ", Sinopse=" + Sinopse + ", Genero=" + Genero + ", Premios=" + Premios + ", Elenco=" + Elenco + ", Duracao_Minutos=" + Duracao_Minutos + ", Direcao=" + Direcao + '}';
+    }
+    
+    public String toStringBonita(){
+        return  "\n Nome:" + Nome + 
+                "\n Categorias:" + Categorias +
+                "\n Material Original:" + Material_Original +
+                "\n Produção:\n" + Producao.toString() +
+                "\n Lançamento:\n" + Lancamento.toString() +
+                "\n Gênero:" + Genero + 
+                "\n Prêmios" + Premios + 
+                "\n Duração:" + Duracao_Minutos + 
+                "\n Elenco:\n" + Elenco + 
+                " minutos \n Direção:\n" + Direcao + 
+                "\n Sinopse:" + Sinopse; 
+
+    }
+    
+    
     }
 
-
-}
+  

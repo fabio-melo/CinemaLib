@@ -21,9 +21,9 @@ public class CinemaLib {
     
     public static void main(String[] args) {
         // Método Padrão
+        // NOT READY //
         
-        
-        //DADOS DE TESTE
+        /*/DADOS DE TESTE
         List<Filme> listaFilmes = new ArrayList();
         Filme F1 = new Filme("Os Vingadores", 2012,"Estados Unidos","New York","NY",2012,"Estados Unidos","Uma Vingança muito vingativa", "Ação","Oscar 2013",150,"Josh Whedon", "John Gruber","Finn Jones","Livre", null); 
         Filme F2 = new Filme("Vingança do Mal", 2012,"Estados Unidos","New York","NY",2012,"Estados Unidos","Uma Vingança muito vingativa", "Ação","Oscar 2013",150,"Josh Whedon", "John Gruber","Finn Jones","Livre", null); 
@@ -35,7 +35,9 @@ public class CinemaLib {
         listaFilmes.add(F3);
         listaFilmes.add(F4);
         // FIM DOS DADOS DE TESTE
+        /*
         
+        */
         /* for(Filme x: listaFilmes){
             System.out.println(x.getNome());
         }
