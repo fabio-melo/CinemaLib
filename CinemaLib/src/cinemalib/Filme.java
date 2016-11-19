@@ -20,6 +20,10 @@ public class Filme implements Serializable {
     private int Duracao_Minutos;
     private String Direcao;
 
+    
+    public Filme(String Nome) {
+        this.Nome = Nome;
+        }
 
     //Mini-subclasses genéricas para lidar com campos Específicos //
     public static class NomeRegistro{

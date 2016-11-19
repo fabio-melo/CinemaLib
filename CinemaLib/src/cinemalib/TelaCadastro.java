@@ -1,9 +1,11 @@
+package cinemalib;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cinemalib;
+
 
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -13,7 +15,8 @@ import javax.swing.JOptionPane;
  * @author Fabs
  */
 public class TelaCadastro extends javax.swing.JFrame {
-
+    
+    public int nomes;
     /**
      * Creates new form TelaCadastro
      */
@@ -401,11 +404,22 @@ public class TelaCadastro extends javax.swing.JFrame {
     }                                             
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
+       //Filme film = new Filme("Nome","2006");
+       //CinemaLib.listaFilmes.add(film);
+        
+        
+        
+        
+        
     }                                           
 
     private void materialOriginalActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        // TODO add your handling code here:
+        
+        
+        
+        
+        
+        
     }                                                
 
     private void buttonAdicionarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {                                                         
@@ -465,22 +479,17 @@ public class TelaCadastro extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        //</editor-fold>
+            
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaCadastro().setVisible(true);
             }
         });
-        
-        
-        
-        
-        
-        
-        
-        
+ 
     }
+    
     private int iElencos = 0;
     private String[] elencos = new String[10];
     private int iCategorias = 0;
