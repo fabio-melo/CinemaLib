@@ -23,27 +23,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public static String nomedoarquivo = "meusfilmes.ser";
    //metodos para serializar e deserializar
     public static void carregarDados(){
-        File arquivofilmes = new File(nomedoarquivo);
-            if(arquivofilmes.exists() == false){
-            try {
-                arquivofilmes.createNewFile();
-            } catch (IOException ex) {
-                Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, "Erro de Leitura");
-            }
-}
-            
-        FileInputStream fis = null;
-        ObjectInputStream ois = null;
-                try {
-                        fis = new FileInputStream(nomedoarquivo);
-                        ois = new ObjectInputStream(fis);
-                        listaFilmes = (ArrayList) ois.readObject();
-                        ois.close();
-                } catch (Exception ex) {
-                        ex.printStackTrace();
-                        JOptionPane.showMessageDialog(null, "Erro Indefinido");
-                }
         
         Deserializador d = new Deserializador();
 
@@ -80,7 +59,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
             listagem.setModel(lst);
     }
-
+    public static void inicializarArquivo(){
+           File arquivofilmes = new File(nomedoarquivo);
+            if(arquivofilmes.exists() == false){
+            try {
+                arquivofilmes.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Erro de Leitura");
+            }
+}
+           
+    }
     /**
      * Creates new form TelaPrincipal
      */
@@ -311,7 +301,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+                inicializarArquivo();
                 TelaPrincipal tp = new TelaPrincipal();
                 tp.setVisible(true);
                 tp.atualizarLista();
