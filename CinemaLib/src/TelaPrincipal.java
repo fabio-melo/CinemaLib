@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 public class TelaPrincipal extends javax.swing.JFrame {
     
     
-    public static String nomedoarquivo = "meusfilmes.ser";
+    //public static String nomedoarquivo = "meusfilmes.ser";
    //metodos para serializar e deserializar
     public static void carregarDados(){
         
@@ -29,7 +29,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         try {
             
             listaFilmes = null;
-            listaFilmes = (ArrayList<Filme>) d.deserializar(nomedoarquivo);
+            listaFilmes = (ArrayList<Filme>) d.deserializar("meusfilmes");
             
             
         } catch (Exception ex) {
@@ -41,7 +41,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public void escreverDados(){
         Serializador s = new Serializador();
         try{
-            s.serializar(nomedoarquivo, listaFilmes);
+            s.serializar("meusfilmes", listaFilmes);
         }catch (Exception ex){
             System.err.println("Falha - " +
             ex.toString());
@@ -59,18 +59,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
             listagem.setModel(lst);
     }
-    public static void inicializarArquivo(){
-           File arquivofilmes = new File(nomedoarquivo);
-            if(arquivofilmes.exists() == false){
-            try {
-                arquivofilmes.createNewFile();
-            } catch (IOException ex) {
-                Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, "Erro de Leitura");
-            }
-}
-           
-    }
+    
     /**
      * Creates new form TelaPrincipal
      */
@@ -301,7 +290,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                inicializarArquivo();
+                
                 TelaPrincipal tp = new TelaPrincipal();
                 tp.setVisible(true);
                 tp.atualizarLista();

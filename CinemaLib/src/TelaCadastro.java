@@ -423,9 +423,9 @@ public class TelaCadastro extends javax.swing.JFrame {
         
         try {
            
-            listaFilmes = (ArrayList<Filme>) d.deserializar(TelaPrincipal.nomedoarquivo);
+            listaFilmes = (ArrayList<Filme>) d.deserializar("meusfilmes");
             listaFilmes.add(salvarfilme);
-            s.serializar(TelaPrincipal.nomedoarquivo, listaFilmes);
+            s.serializar("meusfilmes", listaFilmes);
             dispose();
         } catch (Exception ex) {
             System.err.println("Falha ao Salvar! - " +
