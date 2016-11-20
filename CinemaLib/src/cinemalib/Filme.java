@@ -265,6 +265,21 @@ public class Filme implements Serializable {
                 "\n Sinopse:" + Sinopse; 
 
     }
+    
+        public String toStringTelaPrincipal(){
+        return  "\n Categorias:" + Categorias +
+                "\n Material Original:" + Material_Original +
+                "\n Produção:\n" + Producao.toString() +
+                "\n Lançamento:\n" + Lancamento.toString() +
+                "\n Gênero:" + Genero + 
+                "\n Prêmios" + Premios + 
+                "\n Elenco:\n" + Elenco + 
+                "\n Direção:\n" +"Nome:" + nomeDirecao + " ;Registro Artistico: " + regDirecao +
+                "\n Sinopse:" + Sinopse; 
+
+    }
+    
+    
  
 }
 
