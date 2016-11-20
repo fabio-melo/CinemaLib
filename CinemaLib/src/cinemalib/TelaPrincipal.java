@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class TelaPrincipal extends javax.swing.JFrame {
     
     
-    public static String nomedoarquivo = "meusfilmes.ser";
+    public static String nomedoarquivo = "meusfilmes";
    //metodos para serializar e deserializar
     public static void carregarDados(){
         

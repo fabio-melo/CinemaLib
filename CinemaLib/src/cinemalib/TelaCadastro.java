@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  */
 
 public class TelaCadastro extends javax.swing.JFrame {
-        public static String nomedoarquivo = "meusfilmes.ser";
+        public static String nomedoarquivo = "meusfilmes";
     /**
      * Creates new form TelaCadastro
      */
