@@ -416,7 +416,6 @@ public class TelaCadastro extends javax.swing.JFrame {
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
         
-        
         Filme salvarfilme = new Filme(nome.getText(),materialOriginal.getText());
         Serializador s = new Serializador();
         Deserializador d = new Deserializador();
@@ -424,9 +423,9 @@ public class TelaCadastro extends javax.swing.JFrame {
         
         try {
            
-            listaFilmes = (ArrayList<Filme>) d.deserializar("filmagem");
+            listaFilmes = (ArrayList<Filme>) d.deserializar(TelaPrincipal.nomedoarquivo);
             listaFilmes.add(salvarfilme);
-            s.serializar("filmagem", listaFilmes);
+            s.serializar(TelaPrincipal.nomedoarquivo, listaFilmes);
             dispose();
         } catch (Exception ex) {
             System.err.println("Falha ao Salvar! - " +
