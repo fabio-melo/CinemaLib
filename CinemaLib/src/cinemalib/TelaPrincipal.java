@@ -90,14 +90,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        menuArquivo = new javax.swing.JMenu();
+        menuAdicionar = new javax.swing.JMenuItem();
+        menuEditar = new javax.swing.JMenuItem();
+        menuExcluir = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        menuAjuda = new javax.swing.JMenu();
+        sobrePrograma = new javax.swing.JMenuItem();
 
         setTitle("CineLibrary");
         setMinimumSize(new java.awt.Dimension(1005, 621));
@@ -200,33 +200,33 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel1.setDisabledIcon(null);
         jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        jMenu1.setText("Arquivo");
+        menuArquivo.setText("Arquivo");
 
-        jMenuItem1.setText("Adicionar Filme");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menuAdicionar.setText("Adicionar Filme");
+        menuAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menuAdicionarActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        menuArquivo.add(menuAdicionar);
 
-        jMenuItem2.setText("Editar Filme");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        menuEditar.setText("Editar Filme");
+        menuEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                menuEditarActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        menuArquivo.add(menuEditar);
 
-        jMenuItem5.setText("Excluir Filme");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        menuExcluir.setText("Excluir Filme");
+        menuExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                menuExcluirActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem5);
+        menuArquivo.add(menuExcluir);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuArquivo);
 
         jMenu3.setText("Ferramentas");
 
@@ -235,17 +235,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Ajuda");
+        menuAjuda.setText("Ajuda");
 
-        jMenuItem4.setText("Sobre o Programa");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        sobrePrograma.setText("Sobre o Programa");
+        sobrePrograma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                sobreProgramaActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem4);
+        menuAjuda.add(sobrePrograma);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(menuAjuda);
 
         setJMenuBar(jMenuBar1);
 
@@ -406,19 +406,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void sobreProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobreProgramaActionPerformed
         TelaSobrePrograma ts = new TelaSobrePrograma();
         ts.setVisible(true);       
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_sobreProgramaActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAdicionarActionPerformed
         TelaCadastro tc = new TelaCadastro();
         tc.setVisible(true);
       
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_menuAdicionarActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void menuEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarActionPerformed
         int editar = listagem.getLeadSelectionIndex();
        
         if(editar == -1){
@@ -430,9 +430,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_menuEditarActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void menuExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExcluirActionPerformed
         int apagar = listagem.getLeadSelectionIndex();
        
         if(apagar == -1){
@@ -443,7 +443,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             escreverDados();
             atualizarLista();
         }        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_menuExcluirActionPerformed
     
     /**
      * @param args the command line arguments
@@ -504,19 +504,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextArea dadosFilme;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel labelNome;
     private javax.swing.JList<String> listagem;
+    private javax.swing.JMenuItem menuAdicionar;
+    private javax.swing.JMenu menuAjuda;
+    private javax.swing.JMenu menuArquivo;
+    private javax.swing.JMenuItem menuEditar;
+    private javax.swing.JMenuItem menuExcluir;
+    private javax.swing.JMenuItem sobrePrograma;
     // End of variables declaration//GEN-END:variables
 
     private void setIcon() {

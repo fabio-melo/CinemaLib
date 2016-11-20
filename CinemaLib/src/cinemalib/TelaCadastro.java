@@ -176,9 +176,9 @@ public class TelaCadastro extends javax.swing.JFrame {
                     .addGroup(painelCategoriasLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ButtonLimparCategorias, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(buttonAdicionarCategoria, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(buttonAdicionarCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ButtonLimparCategorias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         painelCategoriasLayout.setVerticalGroup(
@@ -249,20 +249,14 @@ public class TelaCadastro extends javax.swing.JFrame {
             .addGroup(painelElencoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelElencoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelElencoLayout.createSequentialGroup()
-                        .addComponent(labelElenco)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(labelElenco)
                     .addGroup(painelElencoLayout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelElencoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painelElencoLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(ButtonLimparElenco))
-                            .addGroup(painelElencoLayout.createSequentialGroup()
-                                .addComponent(ButtonAdicionarElenco)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
+                        .addGroup(painelElencoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ButtonAdicionarElenco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ButtonLimparElenco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelElencoLayout.setVerticalGroup(
             painelElencoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -494,9 +488,9 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void atualizarElenco(){
         DefaultListModel lst = new DefaultListModel();
         
-        for(int i=0;i<Elenco.size();i++){
+        for(int i=0;i<elenco.size();i++){
                 
-                lst.addElement(Elenco.get(i));
+                lst.addElement(elenco.get(i));
                 
             }
         listaElenco.setModel(lst);
@@ -542,7 +536,7 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         
         //public Filme(String Nome, ArrayList<String> Categorias, String Material_Original,int anoLanc,int anoProd, Localizacao Producao, Localizacao Lancamento, String Sinopse, String Genero, String Premios, ArrayList<NomeRegistro> Elenco, String nomeDirecao, String regDirecao)
-        Filme salvarfilme = new Filme(nome.getText(),categorias, materialOriginal.getText(),al,ap,localLanc,localProd,sinopse.getText(),genero.getText(),premios.getText(),Elenco,nomeDiretor.getText(),registroDiretor.getText());
+        Filme salvarfilme = new Filme(nome.getText(),categorias, materialOriginal.getText(),al,ap,localLanc,localProd,sinopse.getText(),genero.getText(),premios.getText(),elenco,nomeDiretor.getText(),registroDiretor.getText());
         Serializador s = new Serializador();
         Deserializador d = new Deserializador();
         List<Filme> listaFilmes = new ArrayList(); 
@@ -556,7 +550,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             listaFilmes.add(salvarfilme);
             s.serializar(nomedoarquivo, listaFilmes);
             
-            Elenco.clear();
+            elenco.clear();
             categorias.clear();
             dispose();
            
@@ -605,12 +599,12 @@ public class TelaCadastro extends javax.swing.JFrame {
         
         
         Filme.NomeRegistro ator = new Filme.NomeRegistro(n,ra);
-        Elenco.add(ator);
+        elenco.add(ator);
         atualizarElenco();
     }//GEN-LAST:event_ButtonAdicionarElencoActionPerformed
 
     private void ButtonLimparElencoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLimparElencoActionPerformed
-        Elenco.clear();
+        elenco.clear();
         atualizarCategorias();
     }//GEN-LAST:event_ButtonLimparElencoActionPerformed
 
@@ -676,7 +670,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     public static boolean editando = false; //Variavel para saber se estamos editando ou cadastrando um novo;
     public static int posicaoEditando;
     public static ArrayList<String> categorias = new ArrayList();
-    public static ArrayList<Filme.NomeRegistro> Elenco = new ArrayList();
+    public static ArrayList<Filme.NomeRegistro> elenco = new ArrayList();
     public static List<Filme> listaFilmes = new ArrayList();
     public static Filme.Localizacao localProd = new Filme.Localizacao();
     public static Filme.Localizacao localLanc = new Filme.Localizacao();

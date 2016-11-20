@@ -341,9 +341,9 @@
                       <Group type="102" attributes="0">
                           <Component id="jScrollPane1" min="-2" pref="308" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="ButtonLimparCategorias" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="buttonAdicionarCategoria" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="buttonAdicionarCategoria" max="32767" attributes="0"/>
+                              <Component id="ButtonLimparCategorias" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -485,26 +485,17 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="labelElenco" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="labelElenco" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="jScrollPane2" min="-2" pref="308" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="ButtonLimparElenco" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="ButtonAdicionarElenco" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="ButtonAdicionarElenco" max="32767" attributes="0"/>
+                              <Component id="ButtonLimparElenco" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
