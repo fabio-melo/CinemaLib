@@ -78,6 +78,10 @@ public class TelaCadastro extends javax.swing.JFrame {
         nomeDiretor = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         registroDiretor = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        cidadeLancamento = new javax.swing.JTextField();
+        estadoLancamento = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -105,6 +109,12 @@ public class TelaCadastro extends javax.swing.JFrame {
         labelAnoLancamento.setText("Ano:");
 
         labelPaisLancamento.setText("País:");
+
+        paisLancamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paisLancamentoActionPerformed(evt);
+            }
+        });
 
         labelGenero.setText("Gênero:");
 
@@ -162,25 +172,27 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelCategoriasLayout.createSequentialGroup()
                         .addComponent(labelCategorias)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
-                        .addComponent(buttonAdicionarCategoria))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(painelCategoriasLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButtonLimparCategorias)))
+                        .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ButtonLimparCategorias, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(buttonAdicionarCategoria, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         painelCategoriasLayout.setVerticalGroup(
             painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCategoriasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelCategorias)
-                    .addComponent(buttonAdicionarCategoria))
+                .addComponent(labelCategorias)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButtonLimparCategorias)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(painelCategoriasLayout.createSequentialGroup()
+                        .addComponent(buttonAdicionarCategoria)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonLimparCategorias)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -239,24 +251,30 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(painelElencoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelElencoLayout.createSequentialGroup()
                         .addComponent(labelElenco)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButtonAdicionarElenco))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(painelElencoLayout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButtonLimparElenco)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(painelElencoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelElencoLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(ButtonLimparElenco))
+                            .addGroup(painelElencoLayout.createSequentialGroup()
+                                .addComponent(ButtonAdicionarElenco)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         painelElencoLayout.setVerticalGroup(
             painelElencoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelElencoLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(labelElenco)
+                .addGap(14, 14, 14)
                 .addGroup(painelElencoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButtonAdicionarElenco)
-                    .addComponent(labelElenco))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelElencoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButtonLimparElenco)
+                    .addGroup(painelElencoLayout.createSequentialGroup()
+                        .addComponent(ButtonAdicionarElenco)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonLimparElenco))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -271,6 +289,16 @@ public class TelaCadastro extends javax.swing.JFrame {
         registroDiretor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registroDiretorActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Cidade:");
+
+        jLabel4.setText("Estado:");
+
+        cidadeLancamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cidadeLancamentoActionPerformed(evt);
             }
         });
 
@@ -300,35 +328,41 @@ public class TelaCadastro extends javax.swing.JFrame {
                                     .addComponent(labelDiretor)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(sinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labelPaisLancamento)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(paisProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(127, 127, 127)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(labelEstadoProducao)
-                                                    .addComponent(estadoProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(anoLancamento, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(paisLancamento, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(labelAnoProducao)
-                                                    .addGap(64, 64, 64)
-                                                    .addComponent(labelPaisProducao))
-                                                .addComponent(labelRoteiro))
-                                            .addGap(95, 95, 95)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(labelCidadeProducao)
-                                                .addComponent(cidadeProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(labelPremios)))
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel1)
-                                            .addGap(164, 164, 164)
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(paisProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(labelPaisLancamento))
+                                            .addGap(127, 127, 127)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jLabel4)
+                                                .addComponent(labelEstadoProducao)
+                                                .addComponent(estadoProducao, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                                                .addComponent(estadoLancamento))))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(anoLancamento, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(paisLancamento, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(cidadeLancamento))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(labelAnoProducao)
+                                                        .addGap(64, 64, 64)
+                                                        .addComponent(labelPaisProducao))
+                                                    .addComponent(labelRoteiro))
+                                                .addGap(95, 95, 95)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(labelCidadeProducao)
+                                                    .addComponent(cidadeProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(labelPremios)
+                                                    .addComponent(jLabel3)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel1)
+                                                .addGap(164, 164, 164)
+                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -406,11 +440,15 @@ public class TelaCadastro extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelAnoLancamento)
-                            .addComponent(labelPaisLancamento))
+                            .addComponent(labelPaisLancamento)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(anoLancamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(paisLancamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(paisLancamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cidadeLancamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(estadoLancamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelDiretor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -496,10 +534,12 @@ public class TelaCadastro extends javax.swing.JFrame {
         int al = Integer.parseInt(anoLancamento.getText());
         int ap = Integer.parseInt(anoProducao.getText());
         localLanc.setPais(paisLancamento.getText());
-        
-        localLanc.setCidade(cidadeProducao.getText());
-        localProd.setEstado(estadoProducao.getText());
+        localLanc.setCidade(cidadeLancamento.getText());
+        localLanc.setEstado(estadoLancamento.getText());
         localProd.setPais(paisProducao.getText());
+        localProd.setCidade(cidadeProducao.getText());
+        localProd.setEstado(estadoProducao.getText());
+
         
         //public Filme(String Nome, ArrayList<String> Categorias, String Material_Original,int anoLanc,int anoProd, Localizacao Producao, Localizacao Lancamento, String Sinopse, String Genero, String Premios, ArrayList<NomeRegistro> Elenco, String nomeDirecao, String regDirecao)
         Filme salvarfilme = new Filme(nome.getText(),categorias, materialOriginal.getText(),al,ap,localLanc,localProd,sinopse.getText(),genero.getText(),premios.getText(),Elenco,nomeDiretor.getText(),registroDiretor.getText());
@@ -516,6 +556,8 @@ public class TelaCadastro extends javax.swing.JFrame {
             listaFilmes.add(salvarfilme);
             s.serializar(nomedoarquivo, listaFilmes);
             
+            Elenco.clear();
+            categorias.clear();
             dispose();
            
             
@@ -580,6 +622,14 @@ public class TelaCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoRestaurarActionPerformed
 
+    private void cidadeLancamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidadeLancamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cidadeLancamentoActionPerformed
+
+    private void paisLancamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paisLancamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_paisLancamentoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -639,11 +689,15 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JButton botaoRestaurar;
     private javax.swing.JButton botaoSalvar;
     private javax.swing.JButton buttonAdicionarCategoria;
+    private javax.swing.JTextField cidadeLancamento;
     private javax.swing.JTextField cidadeProducao;
+    private javax.swing.JTextField estadoLancamento;
     private javax.swing.JTextField estadoProducao;
     private javax.swing.JTextField genero;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelAnoLancamento;
