@@ -1,10 +1,8 @@
 package cinemalib;
+import java.awt.Toolkit;
 import java.io.*;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 /**
  * Linguagem de Programação 1 - Projeto Final
@@ -34,7 +32,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
    
     }
-    public void escreverDados(){
+    public static void escreverDados(){
         Serializador s = new Serializador();
         try{
             s.serializar(nomedoarquivo, listaFilmes);
@@ -47,13 +45,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     //metodo que vai atualizar a lista de filmes 
     public void atualizarLista() {
         carregarDados();
+        
         DefaultListModel lst = new DefaultListModel();
         for(Filme f : listaFilmes){
                 
                 lst.addElement(f.getNome());
                 
             }
-            listagem.setModel(lst);
+        listagem.setModel(lst);
     }
 
     
@@ -66,6 +65,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         
         initComponents();
+        setIcon();
     }
 
     /**
@@ -88,13 +88,40 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         listagem = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setTitle("CineLibrary");
+        setMinimumSize(new java.awt.Dimension(1005, 621));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         campoPesquisar.setText("Pesquisar...");
+        campoPesquisar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoPesquisarFocusGained(evt);
+            }
+        });
+        campoPesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                campoPesquisarMouseClicked(evt);
+            }
+        });
+        campoPesquisar.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                campoPesquisarInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
 
         buttonOk.setText("OK");
         buttonOk.addActionListener(new java.awt.event.ActionListener() {
@@ -104,12 +131,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         labelNome.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        labelNome.setText("Nome do Filme");
 
         dadosFilme.setColumns(20);
         dadosFilme.setRows(5);
         jScrollPane1.setViewportView(dadosFilme);
 
+        buttonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinemalib/images/editar.png"))); // NOI18N
         buttonEditar.setText("EDITAR");
         buttonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +144,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        buttonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinemalib/images/excluir.png"))); // NOI18N
         buttonExcluir.setText("EXCLUIR");
         buttonExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +152,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        buttonAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinemalib/images/adicionar.png"))); // NOI18N
         buttonAdicionar.setText("ADICIONAR");
         buttonAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +164,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         listagem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 listagemMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                listagemMouseReleased(evt);
             }
         });
         listagem.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -151,6 +183,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinemalib/images/pesquisa-20.png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel1.setDisabledIcon(null);
+        jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
         jMenu1.setText("Arquivo");
         jMenuBar1.add(jMenu1);
 
@@ -166,29 +203,29 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(buttonExcluir)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(buttonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(buttonAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(campoPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(buttonOk, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(buttonExcluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonOk, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane3))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
-                            .addComponent(labelNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addComponent(jButton1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
+                            .addComponent(labelNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,10 +234,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(labelNome, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonOk, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-                    .addComponent(campoPesquisar, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(campoPesquisar, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
                     .addComponent(jScrollPane3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -211,7 +249,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel1.getAccessibleContext().setAccessibleDescription("");
+
+        getAccessibleContext().setAccessibleName("CINEMALIB");
+        getAccessibleContext().setAccessibleDescription("");
+
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOkActionPerformed
@@ -231,7 +275,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonOkActionPerformed
 
     private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
-         
+        int editar = listagem.getLeadSelectionIndex();
+       
+        if(editar == -1){
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma opção");
+        }else{
+           TelaCadastro tc = new TelaCadastro();
+            tc.setVisible(true);
+            tc.recebeEditar(editar);
+        }
+
     }//GEN-LAST:event_buttonEditarActionPerformed
 
     private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
@@ -249,7 +302,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
         
-        new TelaCadastro().setVisible(true);
+        TelaCadastro tc = new TelaCadastro();
+        tc.setVisible(true);
+        
         
     }//GEN-LAST:event_buttonAdicionarActionPerformed
 
@@ -257,7 +312,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Filme sel = listaFilmes.get(listagem.getLeadSelectionIndex());
         
         
-        dadosFilme.append(sel.toString());
+        dadosFilme.setText(sel.toStringBonita());
         labelNome.setText(sel.getNome());
         
         
@@ -266,12 +321,37 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_listagemValueChanged
 
     private void listagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listagemMouseClicked
+        listagem.clearSelection();
         atualizarLista();
     }//GEN-LAST:event_listagemMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowActivated
+
+    private void listagemMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listagemMouseReleased
+        atualizarLista();
+    }//GEN-LAST:event_listagemMouseReleased
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        System.exit(0);
+    }//GEN-LAST:event_formWindowClosing
+
+    private void campoPesquisarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoPesquisarMouseClicked
+        campoPesquisar.setText("");
+    }//GEN-LAST:event_campoPesquisarMouseClicked
+
+    private void campoPesquisarInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_campoPesquisarInputMethodTextChanged
+        
+    }//GEN-LAST:event_campoPesquisarInputMethodTextChanged
+
+    private void campoPesquisarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoPesquisarFocusGained
+        
+    }//GEN-LAST:event_campoPesquisarFocusGained
     
     /**
      * @param args the command line arguments
@@ -308,9 +388,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 TelaPrincipal tp = new TelaPrincipal();
                 tp.setVisible(true);
                 tp.atualizarLista();
+                
             }
             
         });
@@ -319,6 +401,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         
     }
+    
     public static List<Filme> listaFilmes = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionar;
@@ -328,6 +411,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField campoPesquisar;
     private javax.swing.JTextArea dadosFilme;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -336,6 +420,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel labelNome;
     private javax.swing.JList<String> listagem;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon() {
+       
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("images/logo16.png")));
+        
+    }
 
 
     

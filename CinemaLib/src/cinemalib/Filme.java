@@ -14,15 +14,51 @@ public class Filme implements Serializable {
     private String Material_Original;
     private Localizacao Producao;
     private Localizacao Lancamento;
+    private int anoProducao;
+    private int anoLancamento;
     private String Sinopse;
     private String Genero;
     private String Premios;
     private ArrayList<NomeRegistro> Elenco;
-    
-    private String Direcao;
+    private String nomeDirecao;
+    private String regDirecao;
 
+    public int getAnoProducao() {
+        return anoProducao;
+    }
+
+    public void setAnoProducao(int anoProducao) {
+        this.anoProducao = anoProducao;
+    }
+
+    public int getAnoLancamento() {
+        return anoLancamento;
+    }
+
+    public void setAnoLancamento(int anoLancamento) {
+        this.anoLancamento = anoLancamento;
+    }
+
+    public String getNomeDirecao() {
+        return nomeDirecao;
+    }
+
+    public void setNomeDirecao(String nomeDirecao) {
+        this.nomeDirecao = nomeDirecao;
+    }
+
+    public String getRegDirecao() {
+        return regDirecao;
+    }
+
+    public void setRegDirecao(String regDirecao) {
+        this.regDirecao = regDirecao;
+    }
+
+    
+    
     //Mini-subclasses genéricas para lidar com campos Específicos //
-    public static class NomeRegistro{
+    public static class NomeRegistro implements Serializable{
         // Objeto para o Array de Filmes e Diretor
         private String Nome;
         private String Registro_Artistico;
@@ -55,7 +91,7 @@ public class Filme implements Serializable {
         
         
     }
-    public static class Localizacao{
+    public static class Localizacao implements Serializable{
         private int Ano;
         private String Pais;
         private String Cidade;
@@ -105,8 +141,8 @@ public class Filme implements Serializable {
     }
     
     // Construtor
-
-    public Filme(String Nome, ArrayList<String> Categorias, String Material_Original, Localizacao Producao, Localizacao Lancamento, String Sinopse, String Genero, String Premios, ArrayList<NomeRegistro> Elenco, int Duracao_Minutos, String Direcao) {
+    
+    public Filme(String Nome, ArrayList<String> Categorias, String Material_Original,int anoLanc,int anoProd, Localizacao Producao, Localizacao Lancamento, String Sinopse, String Genero, String Premios, ArrayList<NomeRegistro> Elenco, String nomeDirecao, String regDirecao) {
         this.Nome = Nome;
         this.Categorias = Categorias;
         this.Material_Original = Material_Original;
@@ -116,14 +152,15 @@ public class Filme implements Serializable {
         this.Genero = Genero;
         this.Premios = Premios;
         this.Elenco = Elenco;
-        this.Direcao = Direcao;
+        this.nomeDirecao = nomeDirecao;
+        this.regDirecao = regDirecao;
+        this.anoLancamento = anoLanc;
+        this.anoProducao = anoProd;
     }
     //temp testar
-    public Filme(String nome, String Material_Original){
+    public Filme(String nome){
         this.Nome = nome;
-        this.Material_Original = Material_Original;
-        
-        
+  
     }
     
     //Getters e Setters /
@@ -188,13 +225,7 @@ public class Filme implements Serializable {
         this.Premios = Premios;
     }
 
-    public String getDirecao() {
-        return Direcao;
-    }
-
-    public void setDirecao(String Direcao) {
-        this.Direcao = Direcao;
-    }
+    
 
     public ArrayList<String> getCategorias() {
         return Categorias;
@@ -218,7 +249,7 @@ public class Filme implements Serializable {
 
     @Override
     public String toString() {
-        return "Filme{" + "Nome=" + Nome + ", Categorias=" + Categorias + ", Material_Original=" + Material_Original + ", Producao=" + Producao + ", Lancamento=" + Lancamento + ", Sinopse=" + Sinopse + ", Genero=" + Genero + ", Premios=" + Premios + ", Elenco=" + Elenco + ", Direcao=" + Direcao + '}';
+        return "Filme{" + "Nome=" + Nome + ", Categorias=" + Categorias + ", Material_Original=" + Material_Original + ", Producao=" + Producao + ", Lancamento=" + Lancamento + ", Sinopse=" + Sinopse + ", Genero=" + Genero + ", Premios=" + Premios + ", Elenco=" + Elenco + '}';
     }
     
     public String toStringBonita(){
@@ -230,7 +261,7 @@ public class Filme implements Serializable {
                 "\n Gênero:" + Genero + 
                 "\n Prêmios" + Premios + 
                 "\n Elenco:\n" + Elenco + 
-                " minutos \n Direção:\n" + Direcao + 
+                "\n Direção:\n" +"Nome:" + nomeDirecao + " ;Registro Artistico: " + regDirecao +
                 "\n Sinopse:" + Sinopse; 
 
     }
