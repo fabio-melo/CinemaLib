@@ -86,7 +86,7 @@ public class Filme implements Serializable {
 
         @Override
         public String toString() {
-            return "Nome:" + Nome + ", Registro Artístico:" + Registro_Artistico + '}';
+            return "Nome:" + Nome + ", Registro Artístico:" + Registro_Artistico;
         }
         
         
