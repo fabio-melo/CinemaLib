@@ -75,7 +75,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Desenvolvido por: Alielson, F&#xe1;bio Melo, Gabriel Augusto, Yuri Felix"/>
+        <Property name="text" type="java.lang.String" value="Desenvolvido por: Alielson Ferreira, F&#xe1;bio Melo, Gabriel Augusto, Yuri Felix"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -83,7 +83,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Linguagem de Programa&#xe7;&#xe3;o 1, 2016.2"/>
+        <Property name="text" type="java.lang.String" value="Linguagem de Programa&#xe7;&#xe3;o 1, 2016.1"/>
       </Properties>
     </Component>
   </SubComponents>

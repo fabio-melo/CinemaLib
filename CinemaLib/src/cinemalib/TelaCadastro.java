@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 /**
  * Linguagem de Programação 1 - Projeto Final
- * @author Alielson, Fábio Melo, Gabriel, Yuri Felix
+ * @author Alielson Ferreira, Fábio Melo, Gabriel Augusto, Yuri Felix
  * TelaCadastro.java - Classe da Interface Gráfica de Cadastro
  */
 

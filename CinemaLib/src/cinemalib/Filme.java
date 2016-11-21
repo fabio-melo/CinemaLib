@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Linguagem de Programação 1 - Projeto Final
- * @author Alielson, Fábio Melo, Gabriel, Yuri Felix
+ * @author Alielson Ferreira, Fábio Melo, Gabriel Augusto, Yuri Felix
  * Filme.java - Classe que gerencia o Objeto Filme
  */
 

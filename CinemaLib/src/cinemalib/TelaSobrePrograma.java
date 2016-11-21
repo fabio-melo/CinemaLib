@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cinemalib;
 
 /**
  *
- * @author Fabs
+ * @author Alielson Ferreira, Fábio Melo, Gabriel Augusto, Yuri Felix
+ * TelaSobrePrograma - Tela de Créditos.
  */
 public class TelaSobrePrograma extends javax.swing.JPanel {
 
@@ -40,10 +36,10 @@ public class TelaSobrePrograma extends javax.swing.JPanel {
         jLabel2.setText("CINEMALIB - Software de Gerenciamento de Biblioteca de Filmes");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Desenvolvido por: Alielson, Fábio Melo, Gabriel Augusto, Yuri Felix");
+        jLabel3.setText("Desenvolvido por: Alielson Ferreira, Fábio Melo, Gabriel Augusto, Yuri Felix");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Linguagem de Programação 1, 2016.2");
+        jLabel4.setText("Linguagem de Programação 1, 2016.1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
