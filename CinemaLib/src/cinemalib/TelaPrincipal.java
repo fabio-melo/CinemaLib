@@ -32,16 +32,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
    
     }
-    public static void escreverDados(){
+        public static void escreverDados(){
         Serializador s = new Serializador();
-        try{
-            s.serializar(nomedoarquivo, listaFilmes);
-        }catch (Exception ex){
-            System.err.println("Falha - " +
-            ex.toString());
+        File fl = new File(nomedoarquivo);
+        if(!fl.exists()){
+            try{
+                s.serializar(nomedoarquivo, listaFilmes);
+            }catch (Exception ex){
+                System.err.println("Falha - " +
+                ex.toString());
+            }
         }
-        
-    }
+        }
     //metodo que vai atualizar a lista de filmes 
     public void atualizarLista() {
         carregarDados();
