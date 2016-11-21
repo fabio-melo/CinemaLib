@@ -23,6 +23,7 @@ public class Filme implements Serializable {
     private String nomeDirecao;
     private String regDirecao;
 
+    // métodos getters e setters //
     public int getAnoProducao() {
         return anoProducao;
     }
@@ -163,7 +164,7 @@ public class Filme implements Serializable {
   
     }
     
-    //Getters e Setters /
+    //mais getters e setters/
 
     public String getNome() {
         return Nome;
@@ -245,7 +246,7 @@ public class Filme implements Serializable {
     
     
 
-    //Método ToString
+    //Métodos ToString
 
     @Override
     public String toString() {

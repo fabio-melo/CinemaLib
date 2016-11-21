@@ -3,16 +3,12 @@ package cinemalib;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Linguagem de Programação 1 - Projeto Final
+ * @author Alielson, Fábio Melo, Gabriel, Yuri Felix
+ * Inicial.java - Splash Screen e Inicializador do Programa
  */
 
-/**
- *
- * @author Yuri Felix
- */
 public class Inicial extends javax.swing.JFrame {
 
     /**
