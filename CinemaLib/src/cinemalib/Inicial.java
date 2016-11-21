@@ -103,7 +103,8 @@ public class Inicial extends javax.swing.JFrame {
                 }
                 new Inicial().dispose();
                 TelaPrincipal tp = new TelaPrincipal();
-                tp.setVisible(true);
+                tp.setVisible(true);    
+                tp.escreverDados();
                 tp.atualizarLista();
     }
 

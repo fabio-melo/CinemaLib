@@ -122,10 +122,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         campoPesquisar.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 campoPesquisarInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
 
@@ -231,6 +231,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu3.setText("Ferramentas");
 
         jMenuItem3.setText("Listar Todos os Filmes");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         jMenuBar1.add(jMenu3);
@@ -444,6 +449,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             atualizarLista();
         }        // TODO add your handling code here:
     }//GEN-LAST:event_menuExcluirActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    TelaMostraTodosFilmes tf = new TelaMostraTodosFilmes();
+    tf.setVisible(true);
+    // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
     
     /**
      * @param args the command line arguments
