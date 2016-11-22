@@ -1,14 +1,21 @@
 package cinemalib;
 
+
+
+import cinemalib.TelaPrincipal;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Linguagem de Programação 1 - Projeto Final
- * @author Alielson Ferreira, Fábio Melo, Gabriel Augusto, Yuri Felix
- * Inicial.java - Splash Screen e Inicializador do Programa
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 
+/**
+ *
+ * @author Yuri Felix
+ */
 public class Inicial extends javax.swing.JFrame {
 
     /**
@@ -29,13 +36,13 @@ public class Inicial extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
-        setMaximumSize(new java.awt.Dimension(1005, 621));
-        setPreferredSize(new java.awt.Dimension(1005, 621));
         setType(java.awt.Window.Type.UTILITY);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinemalib/images/logocinemaLib.png"))); // NOI18N
         jLabel1.setAlignmentY(0.0F);
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,26 +92,26 @@ public class Inicial extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        Inicial in = new Inicial();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Inicial in = new Inicial();
+                
                 in.setVisible(true);
                 
                 
             }
         });
-        
-        try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Inicial.class.getName()).log(Level.SEVERE, null, ex);
+                try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Inicial.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                new Inicial().dispose();
+            
+                in.dispose();
                 TelaPrincipal tp = new TelaPrincipal();
-                tp.setVisible(true);    
-                tp.escreverDados();
+                tp.setVisible(true);
+                tp.verificaArquivo();
                 tp.atualizarLista();
     }
 

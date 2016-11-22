@@ -1,10 +1,12 @@
 package cinemalib;
+
+
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
 /**
  * Linguagem de Programação 1 - Projeto Final
- * @author Alielson Ferreira, Fábio Melo, Gabriel Augusto, Yuri Felix
+ * @author Alielson, Fábio Melo, Gabriel, Yuri Felix
  * Deserializador.java - Classe que lê objetos serializados
  */
  

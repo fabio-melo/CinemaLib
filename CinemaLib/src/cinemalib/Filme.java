@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Linguagem de Programação 1 - Projeto Final
- * @author Alielson Ferreira, Fábio Melo, Gabriel Augusto, Yuri Felix
+ * @author Alielson, Fábio Melo, Gabriel, Yuri Felix
  * Filme.java - Classe que gerencia o Objeto Filme
  */
 
@@ -23,7 +23,6 @@ public class Filme implements Serializable {
     private String nomeDirecao;
     private String regDirecao;
 
-    // métodos getters e setters //
     public int getAnoProducao() {
         return anoProducao;
     }
@@ -158,13 +157,8 @@ public class Filme implements Serializable {
         this.anoLancamento = anoLanc;
         this.anoProducao = anoProd;
     }
-    //temp testar
-    public Filme(String nome){
-        this.Nome = nome;
-  
-    }
     
-    //mais getters e setters/
+    
 
     public String getNome() {
         return Nome;
@@ -246,37 +240,59 @@ public class Filme implements Serializable {
     
     
 
-    //Métodos ToString
+    //Método ToString
 
     @Override
     public String toString() {
         return "Filme{" + "Nome=" + Nome + ", Categorias=" + Categorias + ", Material_Original=" + Material_Original + ", Producao=" + Producao + ", Lancamento=" + Lancamento + ", Sinopse=" + Sinopse + ", Genero=" + Genero + ", Premios=" + Premios + ", Elenco=" + Elenco + '}';
     }
     
-    public String toStringBonita(){
-        return  "\n Nome:" + Nome + 
-                "\n Categorias:" + Categorias +
-                "\n Material Original:" + Material_Original +
-                "\n Produção:\n" + Producao.toString() +
-                "\n Lançamento:\n" + Lancamento.toString() +
-                "\n Gênero:" + Genero + 
-                "\n Prêmios" + Premios + 
-                "\n Elenco:\n" + Elenco + 
-                "\n Direção:\n" +"Nome:" + nomeDirecao + " ;Registro Artistico: " + regDirecao +
-                "\n Sinopse:" + Sinopse; 
-
-    }
+    
     
         public String toStringTelaPrincipal(){
-        return  "\n Categorias:" + Categorias +
-                "\n Material Original:" + Material_Original +
-                "\n Produção:\n" + Producao.toString() +
-                "\n Lançamento:\n" + Lancamento.toString() +
-                "\n Gênero:" + Genero + 
-                "\n Prêmios" + Premios + 
-                "\n Elenco:\n" + Elenco + 
-                "\n Direção:\n" +"Nome:" + nomeDirecao + " ;Registro Artistico: " + regDirecao +
-                "\n Sinopse:" + Sinopse; 
+           String txt = "<html>"+
+            "<div style=\"width:400px;\">"+
+            "<b>Nome:</b>"+Nome+"<br>"+
+            "<b>Sinopse:</b>"+ Sinopse +"<br>"+
+            "<b>Premios:</b>"+ Premios +"<br><br>"+
+
+            "<b>Genero:</b>"+ Genero +"<br><b>Material Original:</b>"+Material_Original+ 
+            "<br><b>Diretor</b><br>"+
+            "<b>Nome:</b>"+ nomeDirecao +"<br>"+
+            "<b>Registro Artistico:</b>"+ regDirecao +"<br><br>"+
+            
+            "<b>Producao</b><br>"+
+            "<b> Ano:</b>"+ anoProducao +"<br>"+
+            "<b> Cidade: </b>"+ Producao.Cidade+ "<br>"+
+            "<b> Estado: </b>"+ Producao.Estado+ "<br>"+
+            "<b> Pais: </b>"+ Producao.Pais +"<br></div>"+
+            "<b>Lancamento</b><br>"+
+            "<b> Ano:</b>"+ anoLancamento +"<br>"+
+            "<b> Cidade: </b>"+Lancamento.Cidade+"<br>"+
+            "<b> Estado: </b>"+ Lancamento.Estado+"<br>"+
+            "<b> Pais: </b>"+ Lancamento.Pais+"<br><br>"+
+            "<b>CATEGORIAS</b><br>";
+            if(Categorias.size()==0){
+                txt+="Nenhuma Categoria<br>";
+            }
+            for(int i=0;i<Categorias.size();i++){
+                txt+="<b>Nome:</b>"+Categorias.get(i)+"<br>";
+                
+            }
+            
+            txt+="<b><br>ELENCO</b><br>";
+            if(Elenco.size()==0){
+                txt+="Elenco Vazio<br>";
+            }
+             
+            for(int i=0;i<Elenco.size();i++){
+                txt+="<b>Nome:</b>"+Elenco.get(i).Nome+"<br>"+
+                     "<b>Registro Artistico:</b>"+Elenco.get(i).Registro_Artistico+"<br>";
+            }
+                   
+            txt+="</div></html>";
+   
+        return txt;
 
     }
     

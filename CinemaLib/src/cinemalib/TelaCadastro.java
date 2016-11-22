@@ -1,13 +1,15 @@
 package cinemalib;
-import java.awt.Toolkit;
+
+
+import cinemalib.TelaPrincipal;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 /**
  * Linguagem de Programação 1 - Projeto Final
- * @author Alielson Ferreira, Fábio Melo, Gabriel Augusto, Yuri Felix
+ * @author Alielson, Fábio Melo, Gabriel, Yuri Felix
  * TelaCadastro.java - Classe da Interface Gráfica de Cadastro
  */
 
@@ -42,7 +44,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         labelPaisLancamento = new javax.swing.JLabel();
         paisLancamento = new javax.swing.JTextField();
         labelGenero = new javax.swing.JLabel();
-        labelRoteiro = new javax.swing.JLabel();
         botaoRestaurar = new javax.swing.JButton();
         labelPremios = new javax.swing.JLabel();
         premios = new javax.swing.JTextField();
@@ -64,7 +65,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         cidadeProducao = new javax.swing.JTextField();
         labelAnoProducao = new javax.swing.JLabel();
         labelPaisProducao = new javax.swing.JLabel();
-        roteiro = new javax.swing.JTextField();
         sinopse = new javax.swing.JTextField();
         labelSinopse = new javax.swing.JLabel();
         painelElenco = new javax.swing.JPanel();
@@ -86,6 +86,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
+        genero.setSelectionColor(new java.awt.Color(83, 83, 83));
+
         botaoSalvar.setText("SALVAR");
         botaoSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,9 +102,15 @@ public class TelaCadastro extends javax.swing.JFrame {
         labelLancamento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         labelLancamento.setText("Lançamento:");
 
+        anoLancamento.setSelectionColor(new java.awt.Color(83, 83, 83));
         anoLancamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 anoLancamentoActionPerformed(evt);
+            }
+        });
+        anoLancamento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                anoLancamentoKeyTyped(evt);
             }
         });
 
@@ -110,6 +118,7 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         labelPaisLancamento.setText("País:");
 
+        paisLancamento.setSelectionColor(new java.awt.Color(83, 83, 83));
         paisLancamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 paisLancamentoActionPerformed(evt);
@@ -117,8 +126,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         });
 
         labelGenero.setText("Gênero:");
-
-        labelRoteiro.setText("Roteiro:");
 
         botaoRestaurar.setText("RESTAURAR");
         botaoRestaurar.addActionListener(new java.awt.event.ActionListener() {
@@ -129,8 +136,11 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         labelPremios.setText("Prêmios");
 
+        premios.setSelectionColor(new java.awt.Color(83, 83, 83));
+
         labelMaterialOriginal.setText("Material Original");
 
+        materialOriginal.setSelectionColor(new java.awt.Color(83, 83, 83));
         materialOriginal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 materialOriginalActionPerformed(evt);
@@ -161,6 +171,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        listaCategorias.setSelectionBackground(new java.awt.Color(83, 83, 83));
         jScrollPane1.setViewportView(listaCategorias);
 
         javax.swing.GroupLayout painelCategoriasLayout = new javax.swing.GroupLayout(painelCategorias);
@@ -201,6 +212,7 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         labelNome.setText("Nome do Filme");
 
+        nome.setSelectionColor(new java.awt.Color(83, 83, 83));
         nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomeActionPerformed(evt);
@@ -210,9 +222,24 @@ public class TelaCadastro extends javax.swing.JFrame {
         labelProducao.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         labelProducao.setText("Produção:");
 
+        anoProducao.setSelectionColor(new java.awt.Color(83, 83, 83));
+        anoProducao.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                anoProducaoKeyTyped(evt);
+            }
+        });
+
+        paisProducao.setSelectionColor(new java.awt.Color(83, 83, 83));
+
+        estadoProducao.setSelectionColor(new java.awt.Color(83, 83, 83));
+
+        cidadeProducao.setSelectionColor(new java.awt.Color(83, 83, 83));
+
         labelAnoProducao.setText("Ano:");
 
         labelPaisProducao.setText("País:");
+
+        sinopse.setSelectionColor(new java.awt.Color(83, 83, 83));
 
         labelSinopse.setText("Sinopse");
 
@@ -240,6 +267,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        listaElenco.setSelectionBackground(new java.awt.Color(83, 83, 83));
         jScrollPane2.setViewportView(listaElenco);
 
         javax.swing.GroupLayout painelElencoLayout = new javax.swing.GroupLayout(painelElenco);
@@ -278,8 +306,11 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         jLabel1.setText("Nome:");
 
+        nomeDiretor.setSelectionColor(new java.awt.Color(83, 83, 83));
+
         jLabel2.setText("Registro Artistico:");
 
+        registroDiretor.setSelectionColor(new java.awt.Color(83, 83, 83));
         registroDiretor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registroDiretorActionPerformed(evt);
@@ -290,11 +321,14 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         jLabel4.setText("Estado:");
 
+        cidadeLancamento.setSelectionColor(new java.awt.Color(83, 83, 83));
         cidadeLancamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cidadeLancamentoActionPerformed(evt);
             }
         });
+
+        estadoLancamento.setSelectionColor(new java.awt.Color(83, 83, 83));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -305,58 +339,49 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelAnoLancamento)
+                            .addComponent(labelProducao)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(anoProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelLancamento, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(labelNome)
+                            .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelSinopse)
+                            .addComponent(labelDiretor)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(sinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(roteiro)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(paisProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labelPaisLancamento))
+                                    .addGap(127, 127, 127)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel4)
+                                        .addComponent(labelEstadoProducao)
+                                        .addComponent(estadoProducao, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                                        .addComponent(estadoLancamento))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGap(4, 4, 4)
+                                    .addComponent(anoLancamento, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(premios, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelAnoLancamento)
-                                    .addComponent(labelProducao)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(anoProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(labelLancamento, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addComponent(labelNome)
-                                    .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelSinopse)
-                                    .addComponent(labelDiretor)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(sinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(paisProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(labelPaisLancamento))
-                                            .addGap(127, 127, 127)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jLabel4)
-                                                .addComponent(labelEstadoProducao)
-                                                .addComponent(estadoProducao, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-                                                .addComponent(estadoLancamento))))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(anoLancamento, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(paisLancamento, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(cidadeLancamento))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(labelAnoProducao)
-                                                        .addGap(64, 64, 64)
-                                                        .addComponent(labelPaisProducao))
-                                                    .addComponent(labelRoteiro))
-                                                .addGap(95, 95, 95)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(labelCidadeProducao)
-                                                    .addComponent(cidadeProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(labelPremios)
-                                                    .addComponent(jLabel3)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel1)
-                                                .addGap(164, 164, 164)
-                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(paisLancamento, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cidadeLancamento))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(labelAnoProducao)
+                                        .addGap(64, 64, 64)
+                                        .addComponent(labelPaisProducao)
+                                        .addGap(95, 95, 95)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(labelCidadeProducao)
+                                            .addComponent(cidadeProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel3)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(164, 164, 164)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -369,7 +394,9 @@ public class TelaCadastro extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(nomeDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(registroDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(registroDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(labelPremios, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(premios, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -403,13 +430,9 @@ public class TelaCadastro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(sinopse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelRoteiro)
-                            .addComponent(labelPremios))
+                        .addComponent(labelPremios)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(roteiro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(premios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(premios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(labelProducao)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -513,18 +536,36 @@ public class TelaCadastro extends javax.swing.JFrame {
         registroDiretor.setText(filmeEdit.getRegDirecao());
         
         paisLancamento.setText(filmeEdit.getLancamento().getPais());
+        estadoLancamento.setText(filmeEdit.getProducao().getEstado());
+        cidadeLancamento.setText(filmeEdit.getProducao().getCidade());
         paisProducao.setText(filmeEdit.getProducao().getPais());
         estadoProducao.setText(filmeEdit.getProducao().getEstado());
         cidadeProducao.setText(filmeEdit.getProducao().getCidade());
         
+        categorias = filmeEdit.getCategorias();
+        elenco = filmeEdit.getElenco();
         atualizarCategorias();
         atualizarElenco();
         
         
         
     }
- 
+
+
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
+        
+        for (int i=0; i < getContentPane().getComponentCount(); i++) {
+            Component cc = getContentPane().getComponent(i);
+            if (cc instanceof JTextField) {
+                JTextField field = (JTextField) cc;
+                    if("".equals(field.getText())){ 
+                        JOptionPane.showMessageDialog(null,"Digite todos os campos", "ERRO", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                }
+        }
+                        
+      
         int al = Integer.parseInt(anoLancamento.getText());
         int ap = Integer.parseInt(anoProducao.getText());
         localLanc.setPais(paisLancamento.getText());
@@ -533,9 +574,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         localProd.setPais(paisProducao.getText());
         localProd.setCidade(cidadeProducao.getText());
         localProd.setEstado(estadoProducao.getText());
-
         
-        //public Filme(String Nome, ArrayList<String> Categorias, String Material_Original,int anoLanc,int anoProd, Localizacao Producao, Localizacao Lancamento, String Sinopse, String Genero, String Premios, ArrayList<NomeRegistro> Elenco, String nomeDirecao, String regDirecao)
         Filme salvarfilme = new Filme(nome.getText(),categorias, materialOriginal.getText(),al,ap,localLanc,localProd,sinopse.getText(),genero.getText(),premios.getText(),elenco,nomeDiretor.getText(),registroDiretor.getText());
         Serializador s = new Serializador();
         Deserializador d = new Deserializador();
@@ -552,16 +591,15 @@ public class TelaCadastro extends javax.swing.JFrame {
             
             elenco.clear();
             categorias.clear();
+            
             dispose();
+            
            
             
         } catch (Exception ex) {
             System.err.println("Falha ao Salvar! - " +
             ex.toString());
         }
-        
-       
-        
         
     }//GEN-LAST:event_botaoSalvarActionPerformed
 
@@ -574,14 +612,11 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_materialOriginalActionPerformed
 
     private void buttonAdicionarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarCategoriaActionPerformed
-        
-        
-            String n = JOptionPane.showInputDialog("Digite o nome:");
-            categorias.add(n);
-            atualizarCategorias();
-        
-        
-        
+
+        String n = JOptionPane.showInputDialog("Digite o nome:");
+        categorias.add(n);
+        atualizarCategorias();
+
     }//GEN-LAST:event_buttonAdicionarCategoriaActionPerformed
 
     private void ButtonLimparCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLimparCategoriasActionPerformed
@@ -605,7 +640,7 @@ public class TelaCadastro extends javax.swing.JFrame {
 
     private void ButtonLimparElencoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLimparElencoActionPerformed
         elenco.clear();
-        atualizarCategorias();
+        atualizarElenco();
     }//GEN-LAST:event_ButtonLimparElencoActionPerformed
 
     private void registroDiretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroDiretorActionPerformed
@@ -613,7 +648,18 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_registroDiretorActionPerformed
 
     private void botaoRestaurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRestaurarActionPerformed
-        // TODO add your handling code here:
+        for (int i=0; i < getContentPane().getComponentCount(); i++) {
+                    
+                    Component cc = getContentPane().getComponent(i);
+                    if (cc instanceof JTextField) {
+                        
+                        JTextField field = (JTextField) cc;
+                        field.setText("");   
+                    }
+                    
+        }
+        ButtonLimparElencoActionPerformed(evt);
+        ButtonLimparCategoriasActionPerformed(evt);
     }//GEN-LAST:event_botaoRestaurarActionPerformed
 
     private void cidadeLancamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidadeLancamentoActionPerformed
@@ -623,6 +669,22 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void paisLancamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paisLancamentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_paisLancamentoActionPerformed
+
+    private void anoLancamentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_anoLancamentoKeyTyped
+        String numeros="0987654321";
+        if(!numeros.contains(evt.getKeyChar()+"")){
+            evt.consume();
+            JOptionPane.showMessageDialog(null,"Digite Apenas Numeros","Erro", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_anoLancamentoKeyTyped
+
+    private void anoProducaoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_anoProducaoKeyTyped
+        String numeros="0987654321";
+        if(!numeros.contains(evt.getKeyChar()+"")){
+            evt.consume();
+            JOptionPane.showMessageDialog(null,"Digite Apenas Numeros","Erro", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_anoProducaoKeyTyped
 
     /**
      * @param args the command line arguments
@@ -710,7 +772,6 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel labelPaisProducao;
     private javax.swing.JLabel labelPremios;
     private javax.swing.JLabel labelProducao;
-    private javax.swing.JLabel labelRoteiro;
     private javax.swing.JLabel labelSinopse;
     private javax.swing.JList<String> listaCategorias;
     private javax.swing.JList<String> listaElenco;
@@ -723,10 +784,10 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JTextField paisProducao;
     private javax.swing.JTextField premios;
     private javax.swing.JTextField registroDiretor;
-    private javax.swing.JTextField roteiro;
     private javax.swing.JTextField sinopse;
     // End of variables declaration//GEN-END:variables
 
+    //Logo da aplicação 
     private void setIcon() {
        
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("images/logo16.png")));

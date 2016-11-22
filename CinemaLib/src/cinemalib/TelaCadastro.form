@@ -29,71 +29,57 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="labelAnoLancamento" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelProducao" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="anoProducao" alignment="1" min="-2" pref="73" max="-2" attributes="0"/>
+                              <Component id="labelLancamento" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="labelNome" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="nome" alignment="0" min="-2" pref="419" max="-2" attributes="0"/>
+                          <Component id="labelSinopse" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelDiretor" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="roteiro" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="premios" min="-2" pref="214" max="-2" attributes="0"/>
+                              <Component id="sinopse" alignment="1" min="-2" pref="419" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="paisProducao" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
+                                      <Component id="labelPaisLancamento" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelEstadoProducao" min="-2" max="-2" attributes="0"/>
+                                      <Component id="estadoProducao" pref="93" max="32767" attributes="0"/>
+                                      <Component id="estadoLancamento" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="labelAnoLancamento" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="labelProducao" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Component id="anoProducao" alignment="1" min="-2" pref="73" max="-2" attributes="0"/>
-                                      <Component id="labelLancamento" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="labelNome" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="nome" alignment="0" min="-2" pref="419" max="-2" attributes="0"/>
-                                  <Component id="labelSinopse" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="labelDiretor" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="sinopse" alignment="1" min="-2" pref="419" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="paisProducao" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
-                                              <Component id="labelPaisLancamento" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                              <Component id="labelEstadoProducao" min="-2" max="-2" attributes="0"/>
-                                              <Component id="estadoProducao" pref="93" max="32767" attributes="0"/>
-                                              <Component id="estadoLancamento" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                  <Component id="anoLancamento" min="-2" pref="73" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="paisLancamento" min="-2" pref="116" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cidadeLancamento" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="labelAnoProducao" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                                      <Component id="labelPaisProducao" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="labelCidadeProducao" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cidadeProducao" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
+                                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="anoLancamento" min="-2" pref="73" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="paisLancamento" min="-2" pref="116" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="cidadeLancamento" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="labelAnoProducao" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                                                      <Component id="labelPaisProducao" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="labelRoteiro" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="labelCidadeProducao" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="cidadeProducao" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
-                                                  <Component id="labelPremios" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
-                                              <Component id="jLabel2" min="-2" pref="126" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" min="-2" pref="126" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -115,6 +101,8 @@
                                   <Component id="registroDiretor" min="-2" pref="216" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Component id="labelPremios" min="-2" pref="242" max="-2" attributes="0"/>
+                          <Component id="premios" min="-2" pref="419" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -157,15 +145,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="sinopse" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="labelRoteiro" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelPremios" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="labelPremios" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="roteiro" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="premios" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="premios" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="labelProducao" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -244,6 +226,11 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="genero">
+      <Properties>
+        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="53" green="53" red="53" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="botaoSalvar">
       <Properties>
@@ -272,8 +259,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="anoLancamento">
+      <Properties>
+        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="53" green="53" red="53" type="rgb"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="anoLancamentoActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="anoLancamentoKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="labelAnoLancamento">
@@ -287,6 +280,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="paisLancamento">
+      <Properties>
+        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="53" green="53" red="53" type="rgb"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="paisLancamentoActionPerformed"/>
       </Events>
@@ -294,11 +292,6 @@
     <Component class="javax.swing.JLabel" name="labelGenero">
       <Properties>
         <Property name="text" type="java.lang.String" value="G&#xea;nero:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelRoteiro">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Roteiro:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="botaoRestaurar">
@@ -315,6 +308,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="premios">
+      <Properties>
+        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="53" green="53" red="53" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labelMaterialOriginal">
       <Properties>
@@ -322,6 +320,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="materialOriginal">
+      <Properties>
+        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="53" green="53" red="53" type="rgb"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="materialOriginalActionPerformed"/>
       </Events>
@@ -415,6 +418,9 @@
                     <StringItem index="0" value="Nenhuma Categoria"/>
                   </StringArray>
                 </Property>
+                <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="53" green="53" red="53" type="rgb"/>
+                </Property>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -438,6 +444,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="nome">
+      <Properties>
+        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="53" green="53" red="53" type="rgb"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomeActionPerformed"/>
       </Events>
@@ -451,12 +462,35 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="anoProducao">
+      <Properties>
+        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="53" green="53" red="53" type="rgb"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="anoProducaoKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="paisProducao">
+      <Properties>
+        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="53" green="53" red="53" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="estadoProducao">
+      <Properties>
+        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="53" green="53" red="53" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cidadeProducao">
+      <Properties>
+        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="53" green="53" red="53" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labelAnoProducao">
       <Properties>
@@ -468,9 +502,12 @@
         <Property name="text" type="java.lang.String" value="Pa&#xed;s:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="roteiro">
-    </Component>
     <Component class="javax.swing.JTextField" name="sinopse">
+      <Properties>
+        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="53" green="53" red="53" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labelSinopse">
       <Properties>
@@ -563,6 +600,9 @@
                     <StringItem index="0" value="Nenhum Ator"/>
                   </StringArray>
                 </Property>
+                <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="53" green="53" red="53" type="rgb"/>
+                </Property>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -586,6 +626,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="nomeDiretor">
+      <Properties>
+        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="53" green="53" red="53" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -593,6 +638,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="registroDiretor">
+      <Properties>
+        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="53" green="53" red="53" type="rgb"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registroDiretorActionPerformed"/>
       </Events>
@@ -608,11 +658,21 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cidadeLancamento">
+      <Properties>
+        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="53" green="53" red="53" type="rgb"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cidadeLancamentoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="estadoLancamento">
+      <Properties>
+        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="53" green="53" red="53" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

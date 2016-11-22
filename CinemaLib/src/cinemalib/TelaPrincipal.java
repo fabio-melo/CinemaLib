@@ -1,4 +1,7 @@
 package cinemalib;
+
+
+import cinemalib.TelaSobre;
 import java.awt.Toolkit;
 import java.io.*;
 import java.util.*;
@@ -6,7 +9,7 @@ import javax.swing.*;
 
 /**
  * Linguagem de Programação 1 - Projeto Final
- * @author Alielson Ferreira, Fábio Melo, Gabriel Augusto, Yuri Felix
+ * @author Alielson, Fábio Melo, Gabriel, Yuri Felix
  * TelaPrincipal.java - Classe Aplicação e Janela Principal.
  */
 
@@ -32,7 +35,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
    
     }
-        public static void escreverDados(){
+    public static void verificaArquivo(){
         Serializador s = new Serializador();
         File fl = new File(nomedoarquivo);
         if(!fl.exists()){
@@ -43,7 +46,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 ex.toString());
             }
         }
+        
+    }
+    public static void escreverDados(){
+        Serializador s = new Serializador();
+
+        try{
+            s.serializar(nomedoarquivo, listaFilmes);
+        }catch (Exception ex){
+            System.err.println("Falha - " +
+            ex.toString());
         }
+        
+    }
     //metodo que vai atualizar a lista de filmes 
     public void atualizarLista() {
         carregarDados();
@@ -57,14 +72,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         listagem.setModel(lst);
     }
 
-    
-    
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
-        
-        
         
         initComponents();
         setIcon();
@@ -82,25 +93,33 @@ public class TelaPrincipal extends javax.swing.JFrame {
         campoPesquisar = new javax.swing.JTextField();
         buttonOk = new javax.swing.JButton();
         labelNome = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        dadosFilme = new javax.swing.JTextArea();
         buttonEditar = new javax.swing.JButton();
         buttonExcluir = new javax.swing.JButton();
         buttonAdicionar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         listagem = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuArquivo = new javax.swing.JMenu();
         menuAdicionar = new javax.swing.JMenuItem();
         menuEditar = new javax.swing.JMenuItem();
         menuExcluir = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
         sobrePrograma = new javax.swing.JMenuItem();
 
         setTitle("CineLibrary");
         setMinimumSize(new java.awt.Dimension(1005, 621));
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -111,6 +130,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         campoPesquisar.setText("Pesquisar...");
+        campoPesquisar.setSelectionColor(new java.awt.Color(83, 83, 83));
         campoPesquisar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoPesquisarFocusGained(evt);
@@ -122,10 +142,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         campoPesquisar.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 campoPesquisarInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
 
@@ -138,14 +158,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         labelNome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelNome.setText("Nome");
-
-        dadosFilme.setEditable(false);
-        dadosFilme.setBackground(javax.swing.UIManager.getDefaults().getColor("control"));
-        dadosFilme.setColumns(20);
-        dadosFilme.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        dadosFilme.setRows(5);
-        dadosFilme.setText("Nenhum Filme Selecionado.");
-        jScrollPane1.setViewportView(dadosFilme);
 
         buttonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinemalib/images/editar.png"))); // NOI18N
         buttonEditar.setText("EDITAR");
@@ -173,6 +185,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         listagem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         listagem.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        listagem.setToolTipText("");
+        listagem.setSelectionBackground(new java.awt.Color(83, 83, 83));
         listagem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 listagemMouseClicked(evt);
@@ -188,17 +202,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(listagem);
 
-        jButton1.setText("FECHAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinemalib/images/pesquisa-20.png"))); // NOI18N
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setDisabledIcon(null);
         jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        jTextPane1.setEditable(false);
+        jScrollPane2.setViewportView(jTextPane1);
 
         menuArquivo.setText("Arquivo");
 
@@ -227,6 +237,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuArquivo.add(menuExcluir);
 
         jMenuBar1.add(menuArquivo);
+
+        jMenu3.setText("Ferramentas");
+
+        jMenuItem3.setText("Listar Todos os Filmes");
+        jMenu3.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu3);
 
         menuAjuda.setText("Ajuda");
 
@@ -262,15 +279,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(buttonOk, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane3))
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE))))
+                    .addComponent(jScrollPane2)
+                    .addComponent(labelNome, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -284,14 +296,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(labelNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonExcluir)
                     .addComponent(buttonEditar)
-                    .addComponent(buttonAdicionar)
-                    .addComponent(jButton1))
+                    .addComponent(buttonAdicionar))
                 .addContainerGap())
         );
 
@@ -312,7 +323,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
         DefaultListModel lst = new DefaultListModel();
         for(int i=0;i<listaFilmes.size();i++){
-            if(listaFilmes.get(i).getNome().indexOf(pesquisa)>=0){
+            if(listaFilmes.get(i).getNome().contains(pesquisa)){
                 lst.addElement(listaFilmes.get(i).getNome());
             }
        
@@ -357,26 +368,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void listagemValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listagemValueChanged
         Filme sel = listaFilmes.get(listagem.getLeadSelectionIndex());
         
-        
-        dadosFilme.setText(sel.toStringTelaPrincipal());
         labelNome.setText(sel.getNome());
+        jTextPane1.setContentType("text/html");
         
-        
-        
-        
+        jTextPane1.setText(sel.toStringTelaPrincipal());
     }//GEN-LAST:event_listagemValueChanged
 
     private void listagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listagemMouseClicked
-        listagem.clearSelection();
-        atualizarLista();
+    
     }//GEN-LAST:event_listagemMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
+        atualizarLista();
     }//GEN-LAST:event_formWindowActivated
 
     private void listagemMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listagemMouseReleased
-        atualizarLista();
+        
     }//GEN-LAST:event_listagemMouseReleased
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -395,20 +402,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_campoPesquisarFocusGained
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.exit(0);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void sobreProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobreProgramaActionPerformed
-        TelaSobrePrograma ts = new TelaSobrePrograma();
+        TelaSobre ts = new TelaSobre();
         ts.setVisible(true);       
     }//GEN-LAST:event_sobreProgramaActionPerformed
 
     private void menuAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAdicionarActionPerformed
         TelaCadastro tc = new TelaCadastro();
         tc.setVisible(true);
-      
-        // TODO add your handling code here:
+ 
     }//GEN-LAST:event_menuAdicionarActionPerformed
 
     private void menuEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarActionPerformed
@@ -422,7 +424,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             tc.recebeEditar(editar);
         }
 
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_menuEditarActionPerformed
 
     private void menuExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExcluirActionPerformed
@@ -435,8 +437,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             listaFilmes.remove(apagar);
             escreverDados();
             atualizarLista();
-        }        // TODO add your handling code here:
+        } 
     }//GEN-LAST:event_menuExcluirActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        atualizarLista();
+    }//GEN-LAST:event_formWindowGainedFocus
     
     /**
      * @param args the command line arguments
@@ -476,6 +482,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 
                 TelaPrincipal tp = new TelaPrincipal();
                 tp.setVisible(true);
+                verificaArquivo();
                 tp.atualizarLista();
                 
             }
@@ -494,12 +501,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton buttonExcluir;
     private javax.swing.JButton buttonOk;
     private javax.swing.JTextField campoPesquisar;
-    private javax.swing.JTextArea dadosFilme;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel labelNome;
     private javax.swing.JList<String> listagem;
     private javax.swing.JMenuItem menuAdicionar;
