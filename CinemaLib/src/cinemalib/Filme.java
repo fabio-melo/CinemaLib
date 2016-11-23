@@ -252,31 +252,31 @@ public class Filme implements Serializable {
         public String toStringTelaPrincipal(){
            String txt = "<html>"+
             "<div style=\"width:400px;\">"+
-            "<b>Nome:</b>"+Nome+"<br>"+
-            "<b>Sinopse:</b>"+ Sinopse +"<br>"+
-            "<b>Premios:</b>"+ Premios +"<br><br>"+
+            "<b>Nome:</b> "+Nome+"<br>"+
+            "<b>Sinopse:</b> "+ Sinopse +"<br>"+
+            "<b>Premios:</b> "+ Premios +"<br><br>"+
 
-            "<b>Genero:</b>"+ Genero +"<br><b>Material Original:</b>"+Material_Original+ 
+            "<b>Genero:</b> "+ Genero +"<br><b>Material Original:</b> "+Material_Original+ 
             "<br><b>Diretor</b><br>"+
-            "<b>Nome:</b>"+ nomeDirecao +"<br>"+
-            "<b>Registro Artistico:</b>"+ regDirecao +"<br><br>"+
+            "<b>Nome:</b> "+ nomeDirecao +"<br>"+
+            "<b>Registro Artistico:</b> "+ regDirecao +"<br><br>"+
             
             "<b>Producao</b><br>"+
-            "<b> Ano:</b>"+ anoProducao +"<br>"+
-            "<b> Cidade: </b>"+ Producao.Cidade+ "<br>"+
-            "<b> Estado: </b>"+ Producao.Estado+ "<br>"+
-            "<b> Pais: </b>"+ Producao.Pais +"<br></div>"+
+            "<b> Ano:</b> "+ anoProducao +"<br>"+
+            "<b> Cidade: </b> "+ Producao.Cidade+ "<br>"+
+            "<b> Estado: </b> "+ Producao.Estado+ "<br>"+
+            "<b> Pais: </b> "+ Producao.Pais +"<br></div>"+
             "<b>Lancamento</b><br>"+
-            "<b> Ano:</b>"+ anoLancamento +"<br>"+
-            "<b> Cidade: </b>"+Lancamento.Cidade+"<br>"+
-            "<b> Estado: </b>"+ Lancamento.Estado+"<br>"+
-            "<b> Pais: </b>"+ Lancamento.Pais+"<br><br>"+
+            "<b> Ano:</b> "+ anoLancamento +"<br>"+
+            "<b> Cidade: </b> "+Lancamento.Cidade+"<br>"+
+            "<b> Estado: </b> "+ Lancamento.Estado+"<br>"+
+            "<b> Pais: </b> "+ Lancamento.Pais+"<br><br>"+
             "<b>CATEGORIAS</b><br>";
             if(Categorias.size()==0){
                 txt+="Nenhuma Categoria<br>";
             }
             for(int i=0;i<Categorias.size();i++){
-                txt+="<b>Nome:</b>"+Categorias.get(i)+"<br>";
+                txt+="<b>Nome:</b> "+Categorias.get(i)+"<br>";
                 
             }
             
@@ -286,8 +286,8 @@ public class Filme implements Serializable {
             }
              
             for(int i=0;i<Elenco.size();i++){
-                txt+="<b>Nome:</b>"+Elenco.get(i).Nome+"<br>"+
-                     "<b>Registro Artistico:</b>"+Elenco.get(i).Registro_Artistico+"<br>";
+                txt+="<b>Nome:</b> "+Elenco.get(i).Nome+"<br>"+
+                     "<b>Registro Artistico:</b> "+Elenco.get(i).Registro_Artistico+"<br>";
             }
                    
             txt+="</div></html>";
