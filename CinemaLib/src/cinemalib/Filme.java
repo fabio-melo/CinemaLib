@@ -254,23 +254,23 @@ public class Filme implements Serializable {
             "<div style=\"width:400px;\">"+
             "<b>Nome:</b> "+Nome+"<br>"+
             "<b>Sinopse:</b> "+ Sinopse +"<br>"+
-            "<b>Premios:</b> "+ Premios +"<br><br>"+
+            "<b>Prêmios:</b> "+ Premios +"<br><br>"+
 
-            "<b>Genero:</b> "+ Genero +"<br><b>Material Original:</b> "+Material_Original+ 
+            "<b>Genêro:</b> "+ Genero +"<br><b>Material Original:</b> "+Material_Original+ 
             "<br><b>Diretor</b><br>"+
             "<b>Nome:</b> "+ nomeDirecao +"<br>"+
-            "<b>Registro Artistico:</b> "+ regDirecao +"<br><br>"+
+            "<b>Registro Artístico:</b> "+ regDirecao +"<br><br>"+
             
-            "<b>Producao</b><br>"+
+            "<b>Produção</b><br>"+
             "<b> Ano:</b> "+ anoProducao +"<br>"+
             "<b> Cidade: </b> "+ Producao.Cidade+ "<br>"+
             "<b> Estado: </b> "+ Producao.Estado+ "<br>"+
-            "<b> Pais: </b> "+ Producao.Pais +"<br></div>"+
-            "<b>Lancamento</b><br>"+
+            "<b> País: </b> "+ Producao.Pais +"<br></div>"+
+            "<b>Lançamento</b><br>"+
             "<b> Ano:</b> "+ anoLancamento +"<br>"+
             "<b> Cidade: </b> "+Lancamento.Cidade+"<br>"+
             "<b> Estado: </b> "+ Lancamento.Estado+"<br>"+
-            "<b> Pais: </b> "+ Lancamento.Pais+"<br><br>"+
+            "<b> País: </b> "+ Lancamento.Pais+"<br><br>"+
             "<b>CATEGORIAS</b><br>";
             if(Categorias.size()==0){
                 txt+="Nenhuma Categoria<br>";
